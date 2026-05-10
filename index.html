@@ -12,7 +12,7 @@
         }
 
         body {
-            background: radial-gradient(circle at 20% 30%, #0a0a2a, #050510);
+            background: radial-gradient(ellipse at 30% 40%, #0a0a2a, #020210);
             font-family: 'Segoe UI', 'Vazir', system-ui, -apple-system, sans-serif;
             overflow-x: hidden;
             color: #eee;
@@ -31,25 +31,26 @@
         }
         .hero h1 {
             font-size: 3.8rem;
-            background: linear-gradient(135deg, #FFD700, #FF6B35, #FF1493, #00FFFF);
+            background: linear-gradient(135deg, #FFD700, #FF6B35, #FF1493, #00FFFF, #FFD700);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            animation: glowPulse 2.5s ease-in-out infinite;
+            animation: rainbowGlow 3s ease-in-out infinite;
+            background-size: 200% auto;
         }
-        @keyframes glowPulse {
-            0%, 100% { text-shadow: 0 0 20px rgba(255,215,0,0.3), 0 0 40px rgba(255,105,180,0.2); }
-            50% { text-shadow: 0 0 40px rgba(255,215,0,0.6), 0 0 60px rgba(255,105,180,0.4); }
+        @keyframes rainbowGlow {
+            0% { background-position: 0% center; text-shadow: 0 0 20px rgba(255,215,0,0.3);}
+            50% { background-position: 100% center; text-shadow: 0 0 40px rgba(255,105,180,0.5);}
+            100% { background-position: 0% center; text-shadow: 0 0 20px rgba(255,215,0,0.3);}
         }
         .hero p {
             font-size: 1.1rem;
-            background: linear-gradient(135deg, #FFD700, #FF6B35, #00FFFF);
+            background: linear-gradient(135deg, #FFD700, #FF6B35);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
             margin-top: 0.5rem;
-            border-top: 2px solid;
-            border-image: linear-gradient(90deg, #FFD700, #FF1493) 1;
+            border-top: 2px solid #FFD700;
             display: inline-block;
             padding-top: 0.8rem;
         }
@@ -58,13 +59,13 @@
             text-align: center;
             font-size: 2rem;
             margin: 3rem 0 2rem;
-            padding: 0.5rem 1.5rem;
+            padding: 0.5rem 2rem;
             border-radius: 50px;
-            background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,105,180,0.1));
+            background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,20,147,0.15));
             display: inline-block;
-            width: auto;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,215,0,0.3);
+            border: 1px solid rgba(255,215,0,0.4);
+            box-shadow: 0 0 20px rgba(255,215,0,0.2);
         }
 
         .title-wrapper {
@@ -73,52 +74,72 @@
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
             gap: 2.5rem;
             margin: 2rem 0 4rem;
         }
 
         .poster-frame {
-            background: linear-gradient(135deg, #0F0F1A, #1a1a2e);
+            background: linear-gradient(135deg, #0a0a15, #12122a);
             border-radius: 32px;
             overflow: hidden;
-            box-shadow: 0 25px 40px -15px rgba(0,0,0,0.6);
+            box-shadow: 0 30px 45px -20px rgba(0,0,0,0.8);
             transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(255, 215, 0, 0.25);
             position: relative;
         }
         .poster-frame::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.1), transparent);
-            transition: left 0.6s ease;
-            z-index: 1;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.08), transparent);
+            opacity: 0;
+            transition: opacity 0.5s;
             pointer-events: none;
+            z-index: 1;
         }
         .poster-frame:hover::before {
-            left: 100%;
+            opacity: 1;
         }
         .poster-frame:hover {
             transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 35px 55px -15px rgba(255, 215, 0, 0.4);
+            box-shadow: 0 40px 60px -20px rgba(255, 215, 0, 0.35);
             border-color: #FFD700;
         }
 
-        .poster-img {
+        .img-wrapper {
+            position: relative;
             width: 100%;
             aspect-ratio: 2 / 2.8;
+            overflow: hidden;
+        }
+        
+        .poster-img {
+            width: 100%;
+            height: 100%;
             display: block;
             object-fit: cover;
-            transition: all 0.4s ease;
-            filter: brightness(1.02) contrast(1.05) saturate(1.08);
+            transition: transform 0.5s ease, filter 0.4s ease;
+            filter: brightness(1.02) contrast(1.08) saturate(1.12);
         }
+        
         .poster-frame:hover .poster-img {
-            filter: brightness(1.08) contrast(1.1) saturate(1.15);
-            transform: scale(1.02);
+            transform: scale(1.05);
+            filter: brightness(1.1) contrast(1.12) saturate(1.2);
+        }
+        
+        .gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,215,0,0.15) 0%, rgba(255,20,147,0.1) 50%, transparent 80%);
+            pointer-events: none;
+            z-index: 1;
         }
         
         .overlay-text {
@@ -126,64 +147,75 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
-            padding: 1.8rem 1rem 1.2rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 40%, transparent 100%);
+            padding: 2rem 1.2rem 1.2rem;
             border-radius: 0 0 32px 32px;
-            backdrop-filter: blur(3px);
+            backdrop-filter: blur(2px);
+            z-index: 2;
         }
         
         .overlay-text h3 {
             font-size: 1.5rem;
             margin-bottom: 0.4rem;
-            text-shadow: 0 2px 15px rgba(0,0,0,0.6);
+            text-shadow: 0 2px 20px rgba(0,0,0,0.7);
             letter-spacing: 1px;
             font-weight: 800;
         }
         
         .overlay-text p {
             font-size: 0.85rem;
-            text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+            text-shadow: 0 1px 10px rgba(0,0,0,0.6);
             opacity: 0.95;
         }
         
         .badge {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(255,215,0,0.2));
+            top: 18px;
+            right: 18px;
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(255,215,0,0.25));
             backdrop-filter: blur(12px);
-            padding: 0.45rem 0.9rem;
-            border-radius: 25px;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
             font-size: 0.7rem;
             font-weight: bold;
             color: #FFD700;
-            border: 1px solid rgba(255,215,0,0.6);
-            z-index: 2;
+            border: 1px solid rgba(255,215,0,0.7);
+            z-index: 3;
             letter-spacing: 0.5px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-family: monospace;
         }
         
         .icon-badge {
             position: absolute;
-            bottom: 15px;
-            left: 15px;
-            background: rgba(0,0,0,0.5);
+            bottom: 18px;
+            left: 18px;
+            background: rgba(0,0,0,0.6);
             backdrop-filter: blur(8px);
-            padding: 0.4rem 0.7rem;
+            padding: 0.5rem 0.8rem;
             border-radius: 30px;
-            font-size: 1.2rem;
-            z-index: 2;
-            border: 1px solid rgba(255,215,0,0.4);
+            font-size: 1.3rem;
+            z-index: 3;
+            border: 1px solid rgba(255,215,0,0.5);
+        }
+        
+        .neon-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #FFD700, #FF1493, #00FFFF, transparent);
+            z-index: 3;
         }
         
         .poster-caption {
             padding: 1rem 1rem 1.2rem;
             text-align: center;
-            background: linear-gradient(135deg, #0F0F1A, #13132a);
+            background: linear-gradient(135deg, #0F0F1A, #14142a);
             border-top: 1px solid rgba(255,215,0,0.2);
         }
         .poster-caption h3 {
-            background: linear-gradient(135deg, #FFD700, #FFA500, #FF6B35);
+            background: linear-gradient(135deg, #FFD700, #FFA500);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
@@ -193,12 +225,12 @@
         }
         .poster-caption p {
             font-size: 0.8rem;
-            color: #bbb;
+            color: #ccc;
             line-height: 1.4;
         }
 
         .contact-box {
-            background: linear-gradient(135deg, rgba(255, 165, 0, 0.1), rgba(255, 20, 147, 0.08));
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.12), rgba(255, 20, 147, 0.08));
             backdrop-filter: blur(15px);
             margin: 4rem 0 2rem;
             padding: 2rem;
@@ -211,7 +243,7 @@
             font-size: 1rem;
         }
         .email {
-            background: linear-gradient(135deg, rgba(255, 165, 0, 0.2), rgba(255, 20, 147, 0.1));
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 20, 147, 0.1));
             padding: 0.8rem 1.5rem;
             border-radius: 40px;
             display: inline-block;
@@ -219,7 +251,7 @@
             font-family: monospace;
             font-size: 1.1rem;
             letter-spacing: 0.5px;
-            border: 1px solid rgba(255, 215, 0, 0.5);
+            border: 1px solid #FFD700;
             color: #FFD700;
         }
         .btn {
@@ -301,8 +333,8 @@
                 desc: "فارغ‌التحصیلی کوچولوهای موفق | مدال طلا + پذیرایی ویژه | ۲۰ اسفند ۱۴۰۴",
                 img: "https://images.pexels.com/photos/8613080/pexels-photo-8613080.jpeg?w=700&h=980&fit=crop",
                 overlayTitle: "جشن فارغ‌التحصیلی",
-                overlayDate: "✨ ۲۰ اسفند ۱۴۰۴ | سالن آکادمی ✨",
-                badge: "🎓 CLASS OF 2025",
+                overlayDate: "🎓 ۲۰ اسفند ۱۴۰۴ | سالن آکادمی ۵ ستاره 🎓",
+                badge: "⭐ CLASS OF 2025 ⭐",
                 icon: "🎉"
             },
             {
@@ -311,8 +343,8 @@
                 img: "https://images.pexels.com/photos/8613075/pexels-photo-8613075.jpeg?w=700&h=980&fit=crop",
                 overlayTitle: "ثبت‌نام آغاز شد",
                 overlayDate: "🔥 تخفیف ۳۰٪ تا پایان اسفند | ظرفیت محدود 🔥",
-                badge: "⭐ OFFER 30% OFF",
-                icon: "🎁"
+                badge: "🎁 OFFER 30% OFF 🎁",
+                icon: "📚"
             }
         ];
 
@@ -323,7 +355,7 @@
                 img: "https://images.pexels.com/photos/1486222/pexels-photo-1486222.jpeg?w=700&h=980&fit=crop",
                 overlayTitle: "Toronto Festival 2025",
                 overlayDate: "🎶 June 15-20 | Nathan Phillips Square 🎨",
-                badge: "🌟 SUMMER 2025",
+                badge: "🌟 SUMMER 2025 🌟",
                 icon: "🍁"
             },
             {
@@ -332,7 +364,7 @@
                 img: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?w=700&h=980&fit=crop",
                 overlayTitle: "Tech Summit Toronto",
                 overlayDate: "🚀 Metro Convention Centre | Limited Seats 🚀",
-                badge: "💡 INNOVATION FORUM",
+                badge: "💡 INNOVATION FORUM 💡",
                 icon: "⚡"
             }
         ];
@@ -342,19 +374,15 @@
             frame.className = 'poster-frame';
             
             const imgWrapper = document.createElement('div');
-            imgWrapper.style.position = 'relative';
-            imgWrapper.style.width = '100%';
-            imgWrapper.style.aspectRatio = '2 / 2.8';
-            imgWrapper.style.overflow = 'hidden';
+            imgWrapper.className = 'img-wrapper';
             
             const img = document.createElement('img');
             img.src = poster.img;
             img.alt = poster.title;
             img.className = 'poster-img';
-            img.style.width = '100%';
-            img.style.height = '100%';
-            img.style.objectFit = 'cover';
-            img.style.transition = 'transform 0.4s ease';
+            
+            const gradientOverlay = document.createElement('div');
+            gradientOverlay.className = 'gradient-overlay';
             
             const badge = document.createElement('div');
             badge.className = 'badge';
@@ -364,6 +392,9 @@
             iconBadge.className = 'icon-badge';
             iconBadge.innerHTML = poster.icon;
             
+            const neonLine = document.createElement('div');
+            neonLine.className = 'neon-line';
+            
             const overlay = document.createElement('div');
             overlay.className = 'overlay-text';
             overlay.innerHTML = `
@@ -372,8 +403,10 @@
             `;
             
             imgWrapper.appendChild(img);
+            imgWrapper.appendChild(gradientOverlay);
             imgWrapper.appendChild(badge);
             imgWrapper.appendChild(iconBadge);
+            imgWrapper.appendChild(neonLine);
             imgWrapper.appendChild(overlay);
             
             const caption = document.createElement('div');
@@ -382,13 +415,6 @@
             
             frame.appendChild(imgWrapper);
             frame.appendChild(caption);
-            
-            frame.addEventListener('mouseenter', () => {
-                img.style.transform = 'scale(1.03)';
-            });
-            frame.addEventListener('mouseleave', () => {
-                img.style.transform = 'scale(1)';
-            });
             
             return frame;
         }
