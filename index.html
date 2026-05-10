@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>نمونه پوستر | آکادمی ۵ ستاره & Toronto Events</title>
+    <title>نمونه پوستر | طراحی حرفه‌ای آکادمی ۵ ستاره & Toronto Events</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0a0a2a 0%, #1a0a2e 50%, #0a0a2a 100%);
+            background: radial-gradient(circle at 20% 30%, #0a0a2a, #050510);
             font-family: 'Segoe UI', 'Vazir', system-ui, -apple-system, sans-serif;
             overflow-x: hidden;
             color: #eee;
@@ -30,37 +30,41 @@
             position: relative;
         }
         .hero h1 {
-            font-size: 3.5rem;
-            background: linear-gradient(135deg, #FFD700, #FF6B35, #FF1493, #00BFFF);
+            font-size: 3.8rem;
+            background: linear-gradient(135deg, #FFD700, #FF6B35, #FF1493, #00FFFF);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            animation: glow 3s ease-in-out infinite;
+            animation: glowPulse 2.5s ease-in-out infinite;
         }
-        @keyframes glow {
-            0%, 100% { text-shadow: 0 0 20px rgba(255,215,0,0.3); }
-            50% { text-shadow: 0 0 40px rgba(255,215,0,0.6); }
+        @keyframes glowPulse {
+            0%, 100% { text-shadow: 0 0 20px rgba(255,215,0,0.3), 0 0 40px rgba(255,105,180,0.2); }
+            50% { text-shadow: 0 0 40px rgba(255,215,0,0.6), 0 0 60px rgba(255,105,180,0.4); }
         }
         .hero p {
-            font-size: 1rem;
-            background: linear-gradient(135deg, #FFD700, #FF6B35);
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, #FFD700, #FF6B35, #00FFFF);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
             margin-top: 0.5rem;
-            border-top: 1px solid #FFA500;
+            border-top: 2px solid;
+            border-image: linear-gradient(90deg, #FFD700, #FF1493) 1;
             display: inline-block;
             padding-top: 0.8rem;
         }
 
         .section-title {
             text-align: center;
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin: 3rem 0 2rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #FFD700;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,105,180,0.1));
             display: inline-block;
             width: auto;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,215,0,0.3);
         }
 
         .title-wrapper {
@@ -69,23 +73,38 @@
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2.5rem;
             margin: 2rem 0 4rem;
         }
 
         .poster-frame {
-            background: #0F0F1A;
+            background: linear-gradient(135deg, #0F0F1A, #1a1a2e);
             border-radius: 32px;
             overflow: hidden;
-            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.7);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 165, 0, 0.3);
+            box-shadow: 0 25px 40px -15px rgba(0,0,0,0.6);
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(255, 215, 0, 0.2);
             position: relative;
         }
+        .poster-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.1), transparent);
+            transition: left 0.6s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .poster-frame:hover::before {
+            left: 100%;
+        }
         .poster-frame:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 35px 50px -12px rgba(255, 165, 0, 0.5);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 35px 55px -15px rgba(255, 215, 0, 0.4);
             border-color: #FFD700;
         }
 
@@ -94,7 +113,12 @@
             aspect-ratio: 2 / 2.8;
             display: block;
             object-fit: cover;
-            position: relative;
+            transition: all 0.4s ease;
+            filter: brightness(1.02) contrast(1.05) saturate(1.08);
+        }
+        .poster-frame:hover .poster-img {
+            filter: brightness(1.08) contrast(1.1) saturate(1.15);
+            transform: scale(1.02);
         }
         
         .overlay-text {
@@ -102,45 +126,92 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.4), transparent);
-            padding: 1.5rem 1rem 0.8rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
+            padding: 1.8rem 1rem 1.2rem;
             border-radius: 0 0 32px 32px;
+            backdrop-filter: blur(3px);
+        }
+        
+        .overlay-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.4rem;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.6);
+            letter-spacing: 1px;
+            font-weight: 800;
+        }
+        
+        .overlay-text p {
+            font-size: 0.85rem;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+            opacity: 0.95;
+        }
+        
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(255,215,0,0.2));
+            backdrop-filter: blur(12px);
+            padding: 0.45rem 0.9rem;
+            border-radius: 25px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: #FFD700;
+            border: 1px solid rgba(255,215,0,0.6);
+            z-index: 2;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .icon-badge {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            padding: 0.4rem 0.7rem;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            z-index: 2;
+            border: 1px solid rgba(255,215,0,0.4);
         }
         
         .poster-caption {
-            padding: 1rem;
+            padding: 1rem 1rem 1.2rem;
             text-align: center;
-            background: #0F0F1A;
-            border-top: 1px solid #222;
+            background: linear-gradient(135deg, #0F0F1A, #13132a);
+            border-top: 1px solid rgba(255,215,0,0.2);
         }
         .poster-caption h3 {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
+            background: linear-gradient(135deg, #FFD700, #FFA500, #FF6B35);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.4rem;
             font-size: 1.2rem;
+            font-weight: 700;
         }
         .poster-caption p {
             font-size: 0.8rem;
-            color: #aaa;
+            color: #bbb;
+            line-height: 1.4;
         }
 
         .contact-box {
-            background: rgba(255, 165, 0, 0.1);
-            backdrop-filter: blur(12px);
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.1), rgba(255, 20, 147, 0.08));
+            backdrop-filter: blur(15px);
             margin: 4rem 0 2rem;
             padding: 2rem;
             text-align: center;
             border-radius: 60px;
-            border: 1px solid rgba(255, 165, 0, 0.5);
+            border: 1px solid rgba(255, 215, 0, 0.4);
         }
         .contact-box p {
             margin-bottom: 1rem;
             font-size: 1rem;
         }
         .email {
-            background: rgba(255, 165, 0, 0.2);
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.2), rgba(255, 20, 147, 0.1));
             padding: 0.8rem 1.5rem;
             border-radius: 40px;
             display: inline-block;
@@ -148,7 +219,7 @@
             font-family: monospace;
             font-size: 1.1rem;
             letter-spacing: 0.5px;
-            border: 1px solid rgba(255, 165, 0, 0.5);
+            border: 1px solid rgba(255, 215, 0, 0.5);
             color: #FFD700;
         }
         .btn {
@@ -180,7 +251,7 @@
             border-top: 1px solid #1f1f2a;
             margin-top: 2rem;
             font-size: 0.75rem;
-            color: #555;
+            color: #777;
         }
         @media (max-width: 700px) {
             .hero h1 { font-size: 2rem; }
@@ -188,6 +259,7 @@
             .email { font-size: 0.8rem; }
             .gallery { grid-template-columns: 1fr; gap: 1.5rem; }
             .section-title { font-size: 1.3rem; }
+            .overlay-text h3 { font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -195,8 +267,8 @@
 
 <div class="container">
     <div class="hero">
-        <h1>✨ نمونه کارهای حرفه‌ای ✨</h1>
-        <p>طراحی پوستر | آکادمی ۵ ستاره | رویدادهای تورنتو</p>
+        <h1>✨ پوسترهای حرفه‌ای ✨</h1>
+        <p>طراحی اختصاصی | آکادمی ۵ ستاره | رویدادهای بین‌المللی تورنتو</p>
     </div>
 
     <div class="title-wrapper">
@@ -210,14 +282,14 @@
     <div class="gallery" id="torontoGallery"></div>
 
     <div class="contact-box">
-        <p>🎨 طراحی اختصاصی پوستر برای برندها، رویدادها و کسب‌وکارها</p>
+        <p>🎨 طراحی اختصاصی پوستر برای برندها، رویدادها و کسب‌وکارها با بالاترین کیفیت</p>
         <div class="email">avinlangroodi4@gmail.com</div>
         <br>
         <a href="#" class="btn" id="contactFakeBtn">📩 سفارش طراحی حرفه‌ای</a>
         <a href="#" class="btn btn-outline" id="moreFakeBtn">📁 نمونه کارهای بیشتر</a>
     </div>
     <footer>
-        © تمامی پوسترها با کیفیت چاپ بالا | طراحی شده توسط طراح حرفه‌ای گرافیک
+        © تمامی پوسترها با کیفیت چاپ بالا و طراحی منحصر‌به‌فرد
     </footer>
 </div>
 
@@ -225,39 +297,47 @@
     (function() {
         const academyPosters = [
             {
-                title: "🎓 جشن کف‌پارتی 🎓",
+                title: "🎓 جشن کف‌پارتی",
                 desc: "فارغ‌التحصیلی کوچولوهای موفق | مدال طلا + پذیرایی ویژه | ۲۰ اسفند ۱۴۰۴",
-                img: "https://images.pexels.com/photos/8613078/pexels-photo-8613078.jpeg?w=700&h=980&fit=crop",
+                img: "https://images.pexels.com/photos/8613080/pexels-photo-8613080.jpeg?w=700&h=980&fit=crop",
                 overlayTitle: "جشن فارغ‌التحصیلی",
-                overlayDate: "۲۰ اسفند ۱۴۰۴"
+                overlayDate: "✨ ۲۰ اسفند ۱۴۰۴ | سالن آکادمی ✨",
+                badge: "🎓 CLASS OF 2025",
+                icon: "🎉"
             },
             {
-                title: "📝 ثبت‌نام آغاز شد 📝",
+                title: "📝 ثبت‌نام آغاز شد",
                 desc: "شروع ترم بهار ۱۴۰۵ | تخفیف ویژه ۳۰٪ تا پایان اسفند | همراه با هدیه و کیف",
-                img: "https://images.pexels.com/photos/8423124/pexels-photo-8423124.jpeg?w=700&h=980&fit=crop",
+                img: "https://images.pexels.com/photos/8613075/pexels-photo-8613075.jpeg?w=700&h=980&fit=crop",
                 overlayTitle: "ثبت‌نام آغاز شد",
-                overlayDate: "تخفیف ۳۰٪"
+                overlayDate: "🔥 تخفیف ۳۰٪ تا پایان اسفند | ظرفیت محدود 🔥",
+                badge: "⭐ OFFER 30% OFF",
+                icon: "🎁"
             }
         ];
 
         const torontoPosters = [
             {
-                title: "🍁 Toronto Festival 🍁",
-                desc: "International Music & Arts Festival | June 15-20, 2025 | Downtown Toronto",
+                title: "🍁 Toronto International Festival",
+                desc: "Music • Arts • Culture | June 15-20, 2025 | Downtown Toronto | Free Entry",
                 img: "https://images.pexels.com/photos/1486222/pexels-photo-1486222.jpeg?w=700&h=980&fit=crop",
-                overlayTitle: "Toronto Festival",
-                overlayDate: "June 15-20, 2025"
+                overlayTitle: "Toronto Festival 2025",
+                overlayDate: "🎶 June 15-20 | Nathan Phillips Square 🎨",
+                badge: "🌟 SUMMER 2025",
+                icon: "🍁"
             },
             {
-                title: "💼 Tech Summit Toronto 💼",
-                desc: "Annual Technology Conference | Innovation • AI • Future | Register Now",
+                title: "💼 Toronto Tech Summit",
+                desc: "AI • Innovation • Future | Annual Technology Conference | Register Now",
                 img: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?w=700&h=980&fit=crop",
-                overlayTitle: "Tech Summit",
-                overlayDate: "Toronto 2025"
+                overlayTitle: "Tech Summit Toronto",
+                overlayDate: "🚀 Metro Convention Centre | Limited Seats 🚀",
+                badge: "💡 INNOVATION FORUM",
+                icon: "⚡"
             }
         ];
 
-        function createPosterElement(poster, isAcademy = true) {
+        function createPosterElement(poster) {
             const frame = document.createElement('div');
             frame.className = 'poster-frame';
             
@@ -265,6 +345,7 @@
             imgWrapper.style.position = 'relative';
             imgWrapper.style.width = '100%';
             imgWrapper.style.aspectRatio = '2 / 2.8';
+            imgWrapper.style.overflow = 'hidden';
             
             const img = document.createElement('img');
             img.src = poster.img;
@@ -273,15 +354,26 @@
             img.style.width = '100%';
             img.style.height = '100%';
             img.style.objectFit = 'cover';
+            img.style.transition = 'transform 0.4s ease';
+            
+            const badge = document.createElement('div');
+            badge.className = 'badge';
+            badge.innerHTML = poster.badge;
+            
+            const iconBadge = document.createElement('div');
+            iconBadge.className = 'icon-badge';
+            iconBadge.innerHTML = poster.icon;
             
             const overlay = document.createElement('div');
             overlay.className = 'overlay-text';
             overlay.innerHTML = `
-                <h3 style="color: #FFD700; font-size: 1.3rem; margin-bottom: 0.3rem;">${poster.overlayTitle}</h3>
-                <p style="color: #FFA500; font-size: 0.9rem;">${poster.overlayDate}</p>
+                <h3 style="background: linear-gradient(135deg, #FFD700, #FFA500); background-clip: text; -webkit-background-clip: text; color: transparent; font-size: 1.35rem; margin-bottom: 0.3rem;">${poster.overlayTitle}</h3>
+                <p style="color: #FFD700; font-size: 0.8rem; opacity: 0.95;">${poster.overlayDate}</p>
             `;
             
             imgWrapper.appendChild(img);
+            imgWrapper.appendChild(badge);
+            imgWrapper.appendChild(iconBadge);
             imgWrapper.appendChild(overlay);
             
             const caption = document.createElement('div');
@@ -290,6 +382,14 @@
             
             frame.appendChild(imgWrapper);
             frame.appendChild(caption);
+            
+            frame.addEventListener('mouseenter', () => {
+                img.style.transform = 'scale(1.03)';
+            });
+            frame.addEventListener('mouseleave', () => {
+                img.style.transform = 'scale(1)';
+            });
+            
             return frame;
         }
 
@@ -301,11 +401,11 @@
             torontoGallery.innerHTML = '';
             
             academyPosters.forEach(poster => {
-                academyGallery.appendChild(createPosterElement(poster, true));
+                academyGallery.appendChild(createPosterElement(poster));
             });
             
             torontoPosters.forEach(poster => {
-                torontoGallery.appendChild(createPosterElement(poster, false));
+                torontoGallery.appendChild(createPosterElement(poster));
             });
         }
         
