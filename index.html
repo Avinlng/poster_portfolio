@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>نمونه پوستر | آکادمی ۵ ستاره & Toronto Events</title>
+    <title>نمونه پوستر | آکادمی ۵ ستاره & Toronto Events | طراحی حرفه‌ای</title>
     <style>
         * {
             margin: 0;
@@ -24,6 +24,7 @@
             padding: 2rem 1.5rem;
         }
 
+        /* هدر با انیمیشن درخشان */
         .hero {
             text-align: center;
             margin-bottom: 4rem;
@@ -35,13 +36,13 @@
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            animation: rainbowGlow 3s ease-in-out infinite;
+            animation: rainbowGlow 2.5s ease-in-out infinite;
             background-size: 200% auto;
         }
         @keyframes rainbowGlow {
-            0% { background-position: 0% center; text-shadow: 0 0 20px rgba(255,215,0,0.3);}
-            50% { background-position: 100% center; text-shadow: 0 0 40px rgba(255,105,180,0.5);}
-            100% { background-position: 0% center; text-shadow: 0 0 20px rgba(255,215,0,0.3);}
+            0% { background-position: 0% center; text-shadow: 0 0 20px rgba(255,215,0,0.4);}
+            50% { background-position: 100% center; text-shadow: 0 0 40px rgba(255,105,180,0.6);}
+            100% { background-position: 0% center; text-shadow: 0 0 20px rgba(255,215,0,0.4);}
         }
         .hero p {
             font-size: 1.1rem;
@@ -49,23 +50,24 @@
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            margin-top: 0.5rem;
-            border-top: 2px solid #FFD700;
+            margin-top: 0.8rem;
+            border-top: 2px solid rgba(255,215,0,0.6);
             display: inline-block;
             padding-top: 0.8rem;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2rem;
+            font-size: 1.9rem;
             margin: 3rem 0 2rem;
             padding: 0.5rem 2rem;
             border-radius: 50px;
-            background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,20,147,0.15));
+            background: linear-gradient(135deg, rgba(255,215,0,0.25), rgba(255,20,147,0.2));
             display: inline-block;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,215,0,0.4);
-            box-shadow: 0 0 20px rgba(255,215,0,0.2);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,215,0,0.5);
+            box-shadow: 0 0 25px rgba(255,215,0,0.3);
+            letter-spacing: 1px;
         }
 
         .title-wrapper {
@@ -75,17 +77,18 @@
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 2.5rem;
+            gap: 2.8rem;
             margin: 2rem 0 4rem;
         }
 
+        /* کارت پوستر با افکت‌های پیشرفته */
         .poster-frame {
             background: linear-gradient(135deg, #0a0a15, #12122a);
-            border-radius: 32px;
+            border-radius: 36px;
             overflow: hidden;
-            box-shadow: 0 30px 45px -20px rgba(0,0,0,0.8);
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            border: 1px solid rgba(255, 215, 0, 0.25);
+            box-shadow: 0 30px 45px -20px rgba(0,0,0,0.9);
+            transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
             position: relative;
         }
         .poster-frame::before {
@@ -95,9 +98,9 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,215,0,0.08), transparent);
+            background: radial-gradient(circle, rgba(255,215,0,0.12), transparent);
             opacity: 0;
-            transition: opacity 0.5s;
+            transition: opacity 0.6s;
             pointer-events: none;
             z-index: 1;
         }
@@ -106,7 +109,7 @@
         }
         .poster-frame:hover {
             transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 40px 60px -20px rgba(255, 215, 0, 0.35);
+            box-shadow: 0 45px 65px -20px rgba(255, 215, 0, 0.5);
             border-color: #FFD700;
         }
 
@@ -122,24 +125,26 @@
             height: 100%;
             display: block;
             object-fit: cover;
-            transition: transform 0.5s ease, filter 0.4s ease;
-            filter: brightness(1.02) contrast(1.08) saturate(1.12);
+            transition: transform 0.6s ease, filter 0.5s ease;
+            filter: brightness(1.03) contrast(1.1) saturate(1.15);
         }
         
         .poster-frame:hover .poster-img {
-            transform: scale(1.05);
-            filter: brightness(1.1) contrast(1.12) saturate(1.2);
+            transform: scale(1.06);
+            filter: brightness(1.12) contrast(1.15) saturate(1.25);
         }
         
-        .gradient-overlay {
+        /* افکت درخشش طلایی داینامیک */
+        .shine-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(255,215,0,0.15) 0%, rgba(255,20,147,0.1) 50%, transparent 80%);
+            background: linear-gradient(125deg, rgba(255,215,0,0.2) 0%, rgba(255,20,147,0.1) 40%, transparent 80%);
             pointer-events: none;
             z-index: 1;
+            mix-blend-mode: overlay;
         }
         
         .overlay-text {
@@ -149,70 +154,79 @@
             right: 0;
             background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 40%, transparent 100%);
             padding: 2rem 1.2rem 1.2rem;
-            border-radius: 0 0 32px 32px;
-            backdrop-filter: blur(2px);
+            border-radius: 0 0 36px 36px;
+            backdrop-filter: blur(3px);
             z-index: 2;
         }
         
         .overlay-text h3 {
-            font-size: 1.5rem;
+            font-size: 1.55rem;
             margin-bottom: 0.4rem;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.7);
+            text-shadow: 0 2px 25px rgba(0,0,0,0.8);
             letter-spacing: 1px;
             font-weight: 800;
         }
         
         .overlay-text p {
             font-size: 0.85rem;
-            text-shadow: 0 1px 10px rgba(0,0,0,0.6);
+            text-shadow: 0 1px 12px rgba(0,0,0,0.7);
             opacity: 0.95;
         }
         
         .badge {
             position: absolute;
-            top: 18px;
-            right: 18px;
-            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(255,215,0,0.25));
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(255,215,0,0.3));
             backdrop-filter: blur(12px);
             padding: 0.5rem 1rem;
-            border-radius: 30px;
+            border-radius: 40px;
             font-size: 0.7rem;
             font-weight: bold;
             color: #FFD700;
-            border: 1px solid rgba(255,215,0,0.7);
+            border: 1px solid rgba(255,215,0,0.8);
             z-index: 3;
             letter-spacing: 0.5px;
             font-family: monospace;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
         }
         
         .icon-badge {
             position: absolute;
-            bottom: 18px;
-            left: 18px;
-            background: rgba(0,0,0,0.6);
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.7);
             backdrop-filter: blur(8px);
-            padding: 0.5rem 0.8rem;
-            border-radius: 30px;
-            font-size: 1.3rem;
+            padding: 0.5rem 0.9rem;
+            border-radius: 40px;
+            font-size: 1.4rem;
             z-index: 3;
-            border: 1px solid rgba(255,215,0,0.5);
+            border: 1px solid rgba(255,215,0,0.6);
+            box-shadow: 0 0 8px rgba(0,0,0,0.5);
         }
         
+        /* نوار نئونی رنگین‌کمانی متحرک */
         .neon-line {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #FFD700, #FF1493, #00FFFF, transparent);
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #FFD700, #FF1493, #00FFFF, #FFD700, transparent);
+            animation: neonMove 3s linear infinite;
+            background-size: 200% 100%;
             z-index: 3;
+        }
+        @keyframes neonMove {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
         }
         
         .poster-caption {
             padding: 1rem 1rem 1.2rem;
             text-align: center;
             background: linear-gradient(135deg, #0F0F1A, #14142a);
-            border-top: 1px solid rgba(255,215,0,0.2);
+            border-top: 1px solid rgba(255,215,0,0.25);
         }
         .poster-caption h3 {
             background: linear-gradient(135deg, #FFD700, #FFA500);
@@ -225,25 +239,25 @@
         }
         .poster-caption p {
             font-size: 0.8rem;
-            color: #ccc;
+            color: #ddd;
             line-height: 1.4;
         }
 
         .contact-box {
-            background: linear-gradient(135deg, rgba(255, 165, 0, 0.12), rgba(255, 20, 147, 0.08));
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.15), rgba(255, 20, 147, 0.1));
             backdrop-filter: blur(15px);
             margin: 4rem 0 2rem;
             padding: 2rem;
             text-align: center;
             border-radius: 60px;
-            border: 1px solid rgba(255, 215, 0, 0.4);
+            border: 1px solid rgba(255, 215, 0, 0.5);
         }
         .contact-box p {
             margin-bottom: 1rem;
             font-size: 1rem;
         }
         .email {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 20, 147, 0.1));
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 20, 147, 0.15));
             padding: 0.8rem 1.5rem;
             border-radius: 40px;
             display: inline-block;
@@ -286,12 +300,12 @@
             color: #777;
         }
         @media (max-width: 700px) {
-            .hero h1 { font-size: 2rem; }
+            .hero h1 { font-size: 1.9rem; }
             .container { padding: 1rem; }
-            .email { font-size: 0.8rem; }
+            .email { font-size: 0.7rem; }
             .gallery { grid-template-columns: 1fr; gap: 1.5rem; }
-            .section-title { font-size: 1.3rem; }
-            .overlay-text h3 { font-size: 1.1rem; }
+            .section-title { font-size: 1.2rem; }
+            .overlay-text h3 { font-size: 1rem; }
         }
     </style>
 </head>
@@ -303,7 +317,7 @@
         <p>طراحی اختصاصی | آکادمی ۵ ستاره | رویدادهای بین‌المللی تورنتو</p>
     </div>
 
-    <!-- بخش 1: کف پارتی (جشن فارغ‌التحصیلی) -->
+    <!-- بخش 1: کف پارتی (فارغ‌التحصیلی) با عکس جدید و فوق‌العاده -->
     <div class="title-wrapper">
         <span class="section-title">🎈 کف‌پارتی | جشن فارغ‌التحصیلی</span>
     </div>
@@ -335,18 +349,18 @@
 
 <script>
     (function() {
-        // پوستر کف پارتی (فارغ‌التحصیلی) - عکس جدید و بهتر
+        // کف پارتی - عکس جدید با کودکان شاد، کلاه فارغ‌التحصیلی و بادکنک
         const graduationPoster = {
             title: "🎓 جشن کف‌پارتی",
             desc: "فارغ‌التحصیلی کوچولوهای موفق | مدال طلا + پذیرایی ویژه | ۲۰ اسفند ۱۴۰۴",
-            img: "https://images.pexels.com/photos/8613081/pexels-photo-8613081.jpeg?w=700&h=980&fit=crop",
+            img: "https://images.pexels.com/photos/8613088/pexels-photo-8613088.jpeg?w=700&h=980&fit=crop",
             overlayTitle: "جشن فارغ‌التحصیلی",
             overlayDate: "🎈 ۲۰ اسفند ۱۴۰۴ | سالن آکادمی ۵ ستاره 🎈",
             badge: "⭐ CLASS OF 2025 ⭐",
             icon: "🎉"
         };
 
-        // پوستر ثبت‌نام - عکس جدید و بهتر
+        // ثبت نام - عکس با کیفیت عالی
         const registrationPoster = {
             title: "📝 ثبت‌نام آغاز شد",
             desc: "شروع ترم بهار ۱۴۰۵ | تخفیف ویژه ۳۰٪ تا پایان اسفند | همراه با هدیه و کیف",
@@ -357,7 +371,7 @@
             icon: "📚"
         };
 
-        // پوسترهای تورنتو (بدون تغییر)
+        // تورنتو
         const torontoPosters = [
             {
                 title: "🍁 Toronto International Festival",
@@ -391,8 +405,8 @@
             img.alt = poster.title;
             img.className = 'poster-img';
             
-            const gradientOverlay = document.createElement('div');
-            gradientOverlay.className = 'gradient-overlay';
+            const shineOverlay = document.createElement('div');
+            shineOverlay.className = 'shine-overlay';
             
             const badge = document.createElement('div');
             badge.className = 'badge';
@@ -408,12 +422,12 @@
             const overlay = document.createElement('div');
             overlay.className = 'overlay-text';
             overlay.innerHTML = `
-                <h3 style="background: linear-gradient(135deg, #FFD700, #FFA500); background-clip: text; -webkit-background-clip: text; color: transparent; font-size: 1.35rem; margin-bottom: 0.3rem;">${poster.overlayTitle}</h3>
-                <p style="color: #FFD700; font-size: 0.8rem; opacity: 0.95;">${poster.overlayDate}</p>
+                <h3 style="background: linear-gradient(135deg, #FFD700, #FFA500, #FF6B35); background-clip: text; -webkit-background-clip: text; color: transparent; font-size: 1.4rem; margin-bottom: 0.3rem;">${poster.overlayTitle}</h3>
+                <p style="color: #FFD700; font-size: 0.82rem; opacity: 0.95;">${poster.overlayDate}</p>
             `;
             
             imgWrapper.appendChild(img);
-            imgWrapper.appendChild(gradientOverlay);
+            imgWrapper.appendChild(shineOverlay);
             imgWrapper.appendChild(badge);
             imgWrapper.appendChild(iconBadge);
             imgWrapper.appendChild(neonLine);
