@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>نمونه پوستر | آکادمی ۵ ستاره & Toronto Events | طراحی حرفه‌ای</title>
+    <title>پوسترهای سینمایی | افکت‌های حرفه‌ای شبیه افترافکت</title>
     <style>
         * {
             margin: 0;
@@ -12,62 +12,70 @@
         }
 
         body {
-            background: radial-gradient(ellipse at 30% 40%, #0a0a2a, #020210);
-            font-family: 'Segoe UI', 'Vazir', system-ui, -apple-system, sans-serif;
+            background: radial-gradient(ellipse at 50% 30%, #0a0a20, #020108);
+            font-family: 'Segoe UI', 'Montserrat', 'Vazir', system-ui;
             overflow-x: hidden;
-            color: #eee;
+            color: #fff;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1500px;
             margin: 0 auto;
-            padding: 2rem 1.5rem;
+            padding: 2rem 1.8rem;
         }
 
-        /* هدر با انیمیشن درخشان */
+        /* هدر با افکت نئون متحرک شبیه موشن گرافیک */
         .hero {
             text-align: center;
             margin-bottom: 4rem;
             position: relative;
         }
         .hero h1 {
-            font-size: 3.8rem;
-            background: linear-gradient(135deg, #FFD700, #FF6B35, #FF1493, #00FFFF, #FFD700);
+            font-size: 4rem;
+            letter-spacing: 3px;
+            background: linear-gradient(90deg, #FFD700, #FF1493, #00FFFF, #FFD700);
+            background-size: 300% auto;
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            animation: rainbowGlow 2.5s ease-in-out infinite;
-            background-size: 200% auto;
+            animation: gradientMove 3s linear infinite, textGlow 1.5s ease-in-out infinite;
         }
-        @keyframes rainbowGlow {
-            0% { background-position: 0% center; text-shadow: 0 0 20px rgba(255,215,0,0.4);}
-            50% { background-position: 100% center; text-shadow: 0 0 40px rgba(255,105,180,0.6);}
-            100% { background-position: 0% center; text-shadow: 0 0 20px rgba(255,215,0,0.4);}
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 0 0 5px rgba(255,215,0,0.5);}
+            50% { text-shadow: 0 0 30px rgba(255,20,147,0.6), 0 0 15px #00FFFF;}
         }
         .hero p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             background: linear-gradient(135deg, #FFD700, #FF6B35);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
             margin-top: 0.8rem;
-            border-top: 2px solid rgba(255,215,0,0.6);
+            border-top: 2px solid rgba(255,215,0,0.5);
             display: inline-block;
             padding-top: 0.8rem;
         }
 
         .section-title {
             text-align: center;
-            font-size: 1.9rem;
+            font-size: 2rem;
             margin: 3rem 0 2rem;
-            padding: 0.5rem 2rem;
-            border-radius: 50px;
-            background: linear-gradient(135deg, rgba(255,215,0,0.25), rgba(255,20,147,0.2));
+            padding: 0.5rem 2.5rem;
+            border-radius: 60px;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(8px);
             display: inline-block;
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,215,0,0.5);
-            box-shadow: 0 0 25px rgba(255,215,0,0.3);
-            letter-spacing: 1px;
+            border: 1px solid rgba(255,215,0,0.6);
+            box-shadow: 0 0 20px rgba(255,215,0,0.3);
+            animation: borderPulse 2s infinite;
+        }
+        @keyframes borderPulse {
+            0% { border-color: rgba(255,215,0,0.4); box-shadow: 0 0 10px rgba(255,215,0,0.2);}
+            100% { border-color: rgba(255,20,147,0.8); box-shadow: 0 0 25px rgba(255,20,147,0.5);}
         }
 
         .title-wrapper {
@@ -76,41 +84,31 @@
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 2.8rem;
-            margin: 2rem 0 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+            margin: 2rem 0 5rem;
         }
 
-        /* کارت پوستر با افکت‌های پیشرفته */
+        /* ========== کارت پوستر با افکت‌های سینمایی ========= */
         .poster-frame {
-            background: linear-gradient(135deg, #0a0a15, #12122a);
-            border-radius: 36px;
-            overflow: hidden;
-            box-shadow: 0 30px 45px -20px rgba(0,0,0,0.9);
-            transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            border: 1px solid rgba(255, 215, 0, 0.3);
             position: relative;
+            border-radius: 32px;
+            overflow: hidden;
+            background: #0a0a14;
+            box-shadow: 0 25px 40px -15px black;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255,215,0,0.3);
+            animation: floatShadow 4s ease-in-out infinite;
         }
-        .poster-frame::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,215,0,0.12), transparent);
-            opacity: 0;
-            transition: opacity 0.6s;
-            pointer-events: none;
-            z-index: 1;
-        }
-        .poster-frame:hover::before {
-            opacity: 1;
+        @keyframes floatShadow {
+            0%, 100% { transform: translateY(0px); box-shadow: 0 25px 40px -15px black; }
+            50% { transform: translateY(-5px); box-shadow: 0 35px 50px -15px rgba(255,215,0,0.3); }
         }
         .poster-frame:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 45px 65px -20px rgba(255, 215, 0, 0.5);
+            transform: scale(1.02) translateY(-8px);
             border-color: #FFD700;
+            box-shadow: 0 0 35px rgba(255,215,0,0.5);
+            animation: none;
         }
 
         .img-wrapper {
@@ -119,65 +117,68 @@
             aspect-ratio: 2 / 2.8;
             overflow: hidden;
         }
-        
         .poster-img {
             width: 100%;
             height: 100%;
-            display: block;
             object-fit: cover;
-            transition: transform 0.6s ease, filter 0.5s ease;
-            filter: brightness(1.03) contrast(1.1) saturate(1.15);
+            transition: filter 0.5s, transform 0.6s;
+            filter: brightness(1.02) contrast(1.08) saturate(1.15);
         }
-        
         .poster-frame:hover .poster-img {
-            transform: scale(1.06);
-            filter: brightness(1.12) contrast(1.15) saturate(1.25);
+            transform: scale(1.05);
+            filter: brightness(1.12) contrast(1.12) saturate(1.25);
         }
-        
-        /* افکت درخشش طلایی داینامیک */
-        .shine-overlay {
+
+        /* ---------- افکت glitch روی عکس (حرکت تصادفی نوری) ---------- */
+        .glitch-overlay {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(125deg, rgba(255,215,0,0.2) 0%, rgba(255,20,147,0.1) 40%, transparent 80%);
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(255,215,0,0.1) 0px, rgba(255,20,147,0.05) 2px, transparent 3px, transparent 8px);
             pointer-events: none;
-            z-index: 1;
-            mix-blend-mode: overlay;
-        }
-        
-        .overlay-text {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 40%, transparent 100%);
-            padding: 2rem 1.2rem 1.2rem;
-            border-radius: 0 0 36px 36px;
-            backdrop-filter: blur(3px);
             z-index: 2;
+            mix-blend-mode: overlay;
+            animation: glitchScan 4s linear infinite;
         }
-        
-        .overlay-text h3 {
-            font-size: 1.55rem;
-            margin-bottom: 0.4rem;
-            text-shadow: 0 2px 25px rgba(0,0,0,0.8);
-            letter-spacing: 1px;
-            font-weight: 800;
+        @keyframes glitchScan {
+            0% { transform: translateY(-100%); opacity: 0; }
+            10% { transform: translateY(0%); opacity: 1; }
+            20% { transform: translateY(0%); opacity: 1; }
+            25% { transform: translateY(100%); opacity: 0; }
+            100% { transform: translateY(100%); opacity: 0; }
         }
-        
-        .overlay-text p {
-            font-size: 0.85rem;
-            text-shadow: 0 1px 12px rgba(0,0,0,0.7);
-            opacity: 0.95;
+
+        /* افکت نئون درخشان در حاشیه (مثل AE) */
+        .neon-border {
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 32px;
+            background: linear-gradient(45deg, #FFD700, #FF1493, #00FFFF, #FFD700);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.5s;
+            filter: blur(8px);
         }
-        
+        .poster-frame:hover .neon-border {
+            opacity: 0.7;
+            animation: borderRotate 3s linear infinite;
+        }
+        @keyframes borderRotate {
+            0% { filter: blur(8px) hue-rotate(0deg);}
+            100% { filter: blur(8px) hue-rotate(360deg);}
+        }
+
+        /* بج های متحرک */
         .badge {
             position: absolute;
             top: 20px;
             right: 20px;
-            background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(255,215,0,0.3));
+            background: rgba(0,0,0,0.7);
             backdrop-filter: blur(12px);
             padding: 0.5rem 1rem;
             border-radius: 40px;
@@ -185,291 +186,267 @@
             font-weight: bold;
             color: #FFD700;
             border: 1px solid rgba(255,215,0,0.8);
-            z-index: 3;
-            letter-spacing: 0.5px;
+            z-index: 5;
             font-family: monospace;
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+            animation: badgePulse 1.5s infinite;
         }
-        
+        @keyframes badgePulse {
+            0%, 100% { text-shadow: 0 0 2px gold; box-shadow: 0 0 2px gold; }
+            50% { text-shadow: 0 0 10px #FF1493; box-shadow: 0 0 10px #FF1493; border-color: #FF1493; color: #fff; }
+        }
+
         .icon-badge {
             position: absolute;
             bottom: 20px;
             left: 20px;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.6);
             backdrop-filter: blur(8px);
             padding: 0.5rem 0.9rem;
-            border-radius: 40px;
-            font-size: 1.4rem;
-            z-index: 3;
-            border: 1px solid rgba(255,215,0,0.6);
-            box-shadow: 0 0 8px rgba(0,0,0,0.5);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            z-index: 5;
+            border: 1px solid gold;
+            animation: rotateIcon 3s linear infinite;
         }
-        
-        /* نوار نئونی رنگین‌کمانی متحرک */
-        .neon-line {
+        @keyframes rotateIcon {
+            0% { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
+        }
+
+        /* متن پایین عکس با انیمیشن درخشش */
+        .overlay-text {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, #FFD700, #FF1493, #00FFFF, #FFD700, transparent);
-            animation: neonMove 3s linear infinite;
-            background-size: 200% 100%;
-            z-index: 3;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.5), transparent);
+            padding: 1.8rem 1rem 1rem;
+            backdrop-filter: blur(4px);
+            z-index: 4;
         }
-        @keyframes neonMove {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 200% 0%; }
+        .overlay-text h3 {
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #FFD700, #FF6B35);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: textShine 2s infinite;
         }
-        
+        @keyframes textShine {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; text-shadow: 0 0 4px rgba(255,215,0,0.5);}
+            100% { background-position: 0% 50%; }
+        }
+        .overlay-text p {
+            color: #FFD700;
+            font-size: 0.8rem;
+            text-shadow: 0 0 8px black;
+            letter-spacing: 1px;
+        }
+
         .poster-caption {
-            padding: 1rem 1rem 1.2rem;
+            padding: 1rem;
             text-align: center;
-            background: linear-gradient(135deg, #0F0F1A, #14142a);
-            border-top: 1px solid rgba(255,215,0,0.25);
+            background: #0c0c18;
+            border-top: 1px solid rgba(255,215,0,0.3);
         }
         .poster-caption h3 {
             background: linear-gradient(135deg, #FFD700, #FFA500);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            margin-bottom: 0.4rem;
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-        .poster-caption p {
-            font-size: 0.8rem;
-            color: #ddd;
-            line-height: 1.4;
         }
 
+        /* دکمه های شناور */
         .contact-box {
-            background: linear-gradient(135deg, rgba(255, 165, 0, 0.15), rgba(255, 20, 147, 0.1));
-            backdrop-filter: blur(15px);
-            margin: 4rem 0 2rem;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(20px);
+            margin-top: 4rem;
             padding: 2rem;
+            border-radius: 80px;
+            border: 1px solid rgba(255,215,0,0.6);
             text-align: center;
-            border-radius: 60px;
-            border: 1px solid rgba(255, 215, 0, 0.5);
-        }
-        .contact-box p {
-            margin-bottom: 1rem;
-            font-size: 1rem;
         }
         .email {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 20, 147, 0.15));
-            padding: 0.8rem 1.5rem;
+            background: rgba(0,0,0,0.5);
+            padding: 0.5rem 1rem;
             border-radius: 40px;
-            display: inline-block;
-            margin-bottom: 1.5rem;
+            color: gold;
             font-family: monospace;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-            border: 1px solid #FFD700;
-            color: #FFD700;
         }
         .btn {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            padding: 12px 28px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            padding: 10px 25px;
             border-radius: 40px;
-            display: inline-block;
-            margin: 0.5rem;
-            text-decoration: none;
-            color: #1a1a2e;
             font-weight: bold;
-            transition: 0.2s;
-            border: none;
-            cursor: pointer;
-        }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid #FFA500;
-            color: #FFD700;
+            transition: 0.3s;
         }
         .btn:hover {
-            background: linear-gradient(135deg, #FFA500, #FF8C00);
-            transform: scale(1.02);
-            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px gold;
         }
         footer {
             text-align: center;
             padding: 2rem;
-            border-top: 1px solid #1f1f2a;
-            margin-top: 2rem;
-            font-size: 0.75rem;
-            color: #777;
+            border-top: 1px solid #333;
+            margin-top: 3rem;
         }
         @media (max-width: 700px) {
-            .hero h1 { font-size: 1.9rem; }
-            .container { padding: 1rem; }
-            .email { font-size: 0.7rem; }
-            .gallery { grid-template-columns: 1fr; gap: 1.5rem; }
-            .section-title { font-size: 1.2rem; }
-            .overlay-text h3 { font-size: 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .gallery { gap: 1.5rem; }
         }
     </style>
 </head>
 <body>
-
 <div class="container">
     <div class="hero">
-        <h1>✨ پوسترهای حرفه‌ای ✨</h1>
-        <p>طراحی اختصاصی | آکادمی ۵ ستاره | رویدادهای بین‌المللی تورنتو</p>
+        <h1>⚡ MOTION POSTERS ⚡</h1>
+        <p>طراحی شبیه افترافکت | افکت‌های نئون | موشن گرافیک حرفه‌ای</p>
     </div>
 
-    <!-- بخش 1: کف پارتی (فارغ‌التحصیلی) با عکس جدید و فوق‌العاده -->
-    <div class="title-wrapper">
-        <span class="section-title">🎈 کف‌پارتی | جشن فارغ‌التحصیلی</span>
-    </div>
-    <div class="gallery" id="graduationGallery"></div>
+    <!-- بخش 1 -->
+    <div class="title-wrapper"><span class="section-title">🎈 کف‌پارتی | جشن فارغ‌التحصیلی</span></div>
+    <div class="gallery" id="gradGallery"></div>
 
-    <!-- بخش 2: ثبت‌نام آکادمی ۵ ستاره -->
-    <div class="title-wrapper">
-        <span class="section-title">📝 ثبت‌نام آکادمی ۵ ستاره</span>
-    </div>
-    <div class="gallery" id="registrationGallery"></div>
+    <!-- بخش 2 -->
+    <div class="title-wrapper"><span class="section-title">📝 ثبت‌نام آکادمی ۵ ستاره</span></div>
+    <div class="gallery" id="regGallery"></div>
 
-    <!-- بخش 3: رویدادهای تورنتو -->
-    <div class="title-wrapper">
-        <span class="section-title">🌆 Toronto Events</span>
-    </div>
+    <!-- بخش 3 -->
+    <div class="title-wrapper"><span class="section-title">🌆 Toronto Events</span></div>
     <div class="gallery" id="torontoGallery"></div>
 
+    <!-- بخش 4: فرشاد سایلنت -->
+    <div class="title-wrapper"><span class="section-title">🎬 ویدیوی ویژه | برج خلیفه</span></div>
+    <div class="gallery" id="silentGallery"></div>
+
     <div class="contact-box">
-        <p>🎨 طراحی اختصاصی پوستر برای برندها، رویدادها و کسب‌وکارها با بالاترین کیفیت</p>
-        <div class="email">avinlangroodi4@gmail.com</div>
-        <br>
-        <a href="#" class="btn" id="contactFakeBtn">📩 سفارش طراحی حرفه‌ای</a>
-        <a href="#" class="btn btn-outline" id="moreFakeBtn">📁 نمونه کارهای بیشتر</a>
+        <p>✨ طراحی پوستر با استایل سینمایی و افکت‌های حرفه‌ای (After Effects style) ✨</p>
+        <div class="email">avinlangroodi4@gmail.com</div><br>
+        <a href="#" class="btn" id="contactBtn">سفارش طراحی</a>
+        <a href="#" class="btn btn-outline" id="moreBtn">نمونه بیشتر</a>
     </div>
-    <footer>
-        © تمامی پوسترها با کیفیت چاپ بالا و طراحی منحصر‌به‌فرد
-    </footer>
+    <footer>© تمام پوسترها دارای افکت‌های موشن و درخشش نئون هستند | طراحی شبیه افترافکت</footer>
 </div>
 
 <script>
     (function() {
-        // کف پارتی - عکس جدید با کودکان شاد، کلاه فارغ‌التحصیلی و بادکنک
-        const graduationPoster = {
+        // دیتاهای پوسترها با عکس‌های خوب و متن
+        const graduation = {
             title: "🎓 جشن کف‌پارتی",
-            desc: "فارغ‌التحصیلی کوچولوهای موفق | مدال طلا + پذیرایی ویژه | ۲۰ اسفند ۱۴۰۴",
+            desc: "فارغ‌التحصیلی کوچولوهای موفق | مدال طلا | ۲۰ اسفند",
             img: "https://images.pexels.com/photos/8613088/pexels-photo-8613088.jpeg?w=700&h=980&fit=crop",
-            overlayTitle: "جشن فارغ‌التحصیلی",
-            overlayDate: "🎈 ۲۰ اسفند ۱۴۰۴ | سالن آکادمی ۵ ستاره 🎈",
-            badge: "⭐ CLASS OF 2025 ⭐",
+            overlayTitle: "Graduation Party",
+            overlayDate: "🎈 ۲۰ اسفند ۱۴۰۴ | آکادمی ۵ ستاره",
+            badge: "⭐ CLASS OF 2025",
             icon: "🎉"
         };
-
-        // ثبت نام - عکس با کیفیت عالی
-        const registrationPoster = {
+        const registration = {
             title: "📝 ثبت‌نام آغاز شد",
-            desc: "شروع ترم بهار ۱۴۰۵ | تخفیف ویژه ۳۰٪ تا پایان اسفند | همراه با هدیه و کیف",
+            desc: "تخفیف ۳۰٪ | هدیه ثبت‌نام | شروع ترم بهار",
             img: "https://images.pexels.com/photos/8613083/pexels-photo-8613083.jpeg?w=700&h=980&fit=crop",
-            overlayTitle: "ثبت‌نام آغاز شد",
-            overlayDate: "🔥 تخفیف ۳۰٪ تا پایان اسفند | ظرفیت محدود 🔥",
-            badge: "🎁 OFFER 30% OFF 🎁",
+            overlayTitle: "Enrollment Open",
+            overlayDate: "🔥 تخفیف ۳۰٪ تا پایان اسفند",
+            badge: "🎁 OFFER 30%",
             icon: "📚"
         };
+        const toronto1 = {
+            title: "🍁 Toronto Festival",
+            desc: "Music • Art • Culture | June 15-20, 2025",
+            img: "https://images.pexels.com/photos/1486222/pexels-photo-1486222.jpeg?w=700&h=980&fit=crop",
+            overlayTitle: "Toronto Fest 2025",
+            overlayDate: "🎶 Nathan Phillips Square",
+            badge: "🌟 SUMMER 2025",
+            icon: "🍁"
+        };
+        const toronto2 = {
+            title: "💼 Tech Summit",
+            desc: "AI • Innovation | Metro Convention Centre",
+            img: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?w=700&h=980&fit=crop",
+            overlayTitle: "Tech Summit Toronto",
+            overlayDate: "🚀 Limited Seats",
+            badge: "💡 INNOVATION",
+            icon: "⚡"
+        };
+        const silent = {
+            title: "🎥 فرشاد سایلنت | برج خلیفه",
+            desc: "ویدیو گردش اختصاصی در بلندترین برج جهان | تماشا کنید",
+            img: "https://images.pexels.com/photos/2903860/pexels-photo-2903860.jpeg?w=700&h=980&fit=crop",
+            overlayTitle: "Burj Khalifa | Dubai",
+            overlayDate: "▶️ جدیدترین ویدیو | فرشاد سایلنت",
+            badge: "🔥 NEW EPISODE",
+            icon: "🎬"
+        };
 
-        // تورنتو
-        const torontoPosters = [
-            {
-                title: "🍁 Toronto International Festival",
-                desc: "Music • Arts • Culture | June 15-20, 2025 | Downtown Toronto | Free Entry",
-                img: "https://images.pexels.com/photos/1486222/pexels-photo-1486222.jpeg?w=700&h=980&fit=crop",
-                overlayTitle: "Toronto Festival 2025",
-                overlayDate: "🎶 June 15-20 | Nathan Phillips Square 🎨",
-                badge: "🌟 SUMMER 2025 🌟",
-                icon: "🍁"
-            },
-            {
-                title: "💼 Toronto Tech Summit",
-                desc: "AI • Innovation • Future | Annual Technology Conference | Register Now",
-                img: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?w=700&h=980&fit=crop",
-                overlayTitle: "Tech Summit Toronto",
-                overlayDate: "🚀 Metro Convention Centre | Limited Seats 🚀",
-                badge: "💡 INNOVATION FORUM 💡",
-                icon: "⚡"
-            }
-        ];
-
-        function createPosterElement(poster) {
+        function createCard(p) {
             const frame = document.createElement('div');
             frame.className = 'poster-frame';
+            // اضافه کردن نئون border
+            const neonBorder = document.createElement('div');
+            neonBorder.className = 'neon-border';
+            frame.appendChild(neonBorder);
             
-            const imgWrapper = document.createElement('div');
-            imgWrapper.className = 'img-wrapper';
+            const imgWrap = document.createElement('div');
+            imgWrap.className = 'img-wrapper';
             
             const img = document.createElement('img');
-            img.src = poster.img;
-            img.alt = poster.title;
+            img.src = p.img;
+            img.alt = p.title;
             img.className = 'poster-img';
             
-            const shineOverlay = document.createElement('div');
-            shineOverlay.className = 'shine-overlay';
+            const glitch = document.createElement('div');
+            glitch.className = 'glitch-overlay';
             
             const badge = document.createElement('div');
             badge.className = 'badge';
-            badge.innerHTML = poster.badge;
+            badge.innerText = p.badge;
             
             const iconBadge = document.createElement('div');
             iconBadge.className = 'icon-badge';
-            iconBadge.innerHTML = poster.icon;
+            iconBadge.innerText = p.icon;
             
-            const neonLine = document.createElement('div');
-            neonLine.className = 'neon-line';
-            
-            const overlay = document.createElement('div');
-            overlay.className = 'overlay-text';
-            overlay.innerHTML = `
-                <h3 style="background: linear-gradient(135deg, #FFD700, #FFA500, #FF6B35); background-clip: text; -webkit-background-clip: text; color: transparent; font-size: 1.4rem; margin-bottom: 0.3rem;">${poster.overlayTitle}</h3>
-                <p style="color: #FFD700; font-size: 0.82rem; opacity: 0.95;">${poster.overlayDate}</p>
+            const overlayDiv = document.createElement('div');
+            overlayDiv.className = 'overlay-text';
+            overlayDiv.innerHTML = `
+                <h3>${p.overlayTitle}</h3>
+                <p>${p.overlayDate}</p>
             `;
             
-            imgWrapper.appendChild(img);
-            imgWrapper.appendChild(shineOverlay);
-            imgWrapper.appendChild(badge);
-            imgWrapper.appendChild(iconBadge);
-            imgWrapper.appendChild(neonLine);
-            imgWrapper.appendChild(overlay);
+            imgWrap.appendChild(img);
+            imgWrap.appendChild(glitch);
+            imgWrap.appendChild(badge);
+            imgWrap.appendChild(iconBadge);
+            imgWrap.appendChild(overlayDiv);
             
             const caption = document.createElement('div');
             caption.className = 'poster-caption';
-            caption.innerHTML = `<h3>${poster.title}</h3><p>${poster.desc}</p>`;
+            caption.innerHTML = `<h3>${p.title}</h3><p>${p.desc}</p>`;
             
-            frame.appendChild(imgWrapper);
+            frame.appendChild(imgWrap);
             frame.appendChild(caption);
-            
             return frame;
         }
 
-        function renderGalleries() {
-            const graduationGallery = document.getElementById('graduationGallery');
-            const registrationGallery = document.getElementById('registrationGallery');
-            const torontoGallery = document.getElementById('torontoGallery');
-            
-            graduationGallery.innerHTML = '';
-            registrationGallery.innerHTML = '';
-            torontoGallery.innerHTML = '';
-            
-            graduationGallery.appendChild(createPosterElement(graduationPoster));
-            registrationGallery.appendChild(createPosterElement(registrationPoster));
-            
-            torontoPosters.forEach(poster => {
-                torontoGallery.appendChild(createPosterElement(poster));
-            });
-        }
+        const gradGal = document.getElementById('gradGallery');
+        const regGal = document.getElementById('regGallery');
+        const torGal = document.getElementById('torontoGallery');
+        const silGal = document.getElementById('silentGallery');
         
-        renderGalleries();
-
-        document.getElementById('contactFakeBtn')?.addEventListener('click', (e) => {
+        gradGal.appendChild(createCard(graduation));
+        regGal.appendChild(createCard(registration));
+        torGal.appendChild(createCard(toronto1));
+        torGal.appendChild(createCard(toronto2));
+        silGal.appendChild(createCard(silent));
+        
+        document.getElementById('contactBtn').onclick = (e) => {
             e.preventDefault();
-            window.location.href = 'mailto:avinlangroodi4@gmail.com';
-        });
-        document.getElementById('moreFakeBtn')?.addEventListener('click', (e) => {
+            location.href = 'mailto:avinlangroodi4@gmail.com';
+        };
+        document.getElementById('moreBtn').onclick = (e) => {
             e.preventDefault();
-            alert("🎨 نمونه پوسترهای حرفه‌ای بیشتری آماده دارم. از طریق ایمیل درخواست بدید تا براتون ارسال کنم.");
-        });
+            alert("✨ نمونه پوسترهای بیشتری با افکت‌های افترافکتی آماده دارم.");
+        };
     })();
 </script>
 </body>
