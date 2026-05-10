@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>نمونه پوستر | طراحی حرفه‌ای آکادمی ۵ ستاره & Toronto Events</title>
+    <title>نمونه پوستر | آکادمی ۵ ستاره & Toronto Events</title>
     <style>
         * {
             margin: 0;
@@ -303,11 +303,19 @@
         <p>طراحی اختصاصی | آکادمی ۵ ستاره | رویدادهای بین‌المللی تورنتو</p>
     </div>
 
+    <!-- بخش 1: کف پارتی (جشن فارغ‌التحصیلی) -->
     <div class="title-wrapper">
-        <span class="section-title">🎓 آکادمی ۵ ستاره</span>
+        <span class="section-title">🎈 کف‌پارتی | جشن فارغ‌التحصیلی</span>
     </div>
-    <div class="gallery" id="academyGallery"></div>
+    <div class="gallery" id="graduationGallery"></div>
 
+    <!-- بخش 2: ثبت‌نام آکادمی ۵ ستاره -->
+    <div class="title-wrapper">
+        <span class="section-title">📝 ثبت‌نام آکادمی ۵ ستاره</span>
+    </div>
+    <div class="gallery" id="registrationGallery"></div>
+
+    <!-- بخش 3: رویدادهای تورنتو -->
     <div class="title-wrapper">
         <span class="section-title">🌆 Toronto Events</span>
     </div>
@@ -327,27 +335,29 @@
 
 <script>
     (function() {
-        const academyPosters = [
-            {
-                title: "🎓 جشن کف‌پارتی",
-                desc: "فارغ‌التحصیلی کوچولوهای موفق | مدال طلا + پذیرایی ویژه | ۲۰ اسفند ۱۴۰۴",
-                img: "https://images.pexels.com/photos/8613080/pexels-photo-8613080.jpeg?w=700&h=980&fit=crop",
-                overlayTitle: "جشن فارغ‌التحصیلی",
-                overlayDate: "🎓 ۲۰ اسفند ۱۴۰۴ | سالن آکادمی ۵ ستاره 🎓",
-                badge: "⭐ CLASS OF 2025 ⭐",
-                icon: "🎉"
-            },
-            {
-                title: "📝 ثبت‌نام آغاز شد",
-                desc: "شروع ترم بهار ۱۴۰۵ | تخفیف ویژه ۳۰٪ تا پایان اسفند | همراه با هدیه و کیف",
-                img: "https://images.pexels.com/photos/8613075/pexels-photo-8613075.jpeg?w=700&h=980&fit=crop",
-                overlayTitle: "ثبت‌نام آغاز شد",
-                overlayDate: "🔥 تخفیف ۳۰٪ تا پایان اسفند | ظرفیت محدود 🔥",
-                badge: "🎁 OFFER 30% OFF 🎁",
-                icon: "📚"
-            }
-        ];
+        // پوستر کف پارتی (فارغ‌التحصیلی) - عکس جدید و بهتر
+        const graduationPoster = {
+            title: "🎓 جشن کف‌پارتی",
+            desc: "فارغ‌التحصیلی کوچولوهای موفق | مدال طلا + پذیرایی ویژه | ۲۰ اسفند ۱۴۰۴",
+            img: "https://images.pexels.com/photos/8613081/pexels-photo-8613081.jpeg?w=700&h=980&fit=crop",
+            overlayTitle: "جشن فارغ‌التحصیلی",
+            overlayDate: "🎈 ۲۰ اسفند ۱۴۰۴ | سالن آکادمی ۵ ستاره 🎈",
+            badge: "⭐ CLASS OF 2025 ⭐",
+            icon: "🎉"
+        };
 
+        // پوستر ثبت‌نام - عکس جدید و بهتر
+        const registrationPoster = {
+            title: "📝 ثبت‌نام آغاز شد",
+            desc: "شروع ترم بهار ۱۴۰۵ | تخفیف ویژه ۳۰٪ تا پایان اسفند | همراه با هدیه و کیف",
+            img: "https://images.pexels.com/photos/8613083/pexels-photo-8613083.jpeg?w=700&h=980&fit=crop",
+            overlayTitle: "ثبت‌نام آغاز شد",
+            overlayDate: "🔥 تخفیف ۳۰٪ تا پایان اسفند | ظرفیت محدود 🔥",
+            badge: "🎁 OFFER 30% OFF 🎁",
+            icon: "📚"
+        };
+
+        // پوسترهای تورنتو (بدون تغییر)
         const torontoPosters = [
             {
                 title: "🍁 Toronto International Festival",
@@ -420,15 +430,16 @@
         }
 
         function renderGalleries() {
-            const academyGallery = document.getElementById('academyGallery');
+            const graduationGallery = document.getElementById('graduationGallery');
+            const registrationGallery = document.getElementById('registrationGallery');
             const torontoGallery = document.getElementById('torontoGallery');
             
-            academyGallery.innerHTML = '';
+            graduationGallery.innerHTML = '';
+            registrationGallery.innerHTML = '';
             torontoGallery.innerHTML = '';
             
-            academyPosters.forEach(poster => {
-                academyGallery.appendChild(createPosterElement(poster));
-            });
+            graduationGallery.appendChild(createPosterElement(graduationPoster));
+            registrationGallery.appendChild(createPosterElement(registrationPoster));
             
             torontoPosters.forEach(poster => {
                 torontoGallery.appendChild(createPosterElement(poster));
