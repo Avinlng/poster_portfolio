@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>پوسترهای حرفه‌ای | آکادمی ۵ ستاره</title>
+    <title>نمونه پوستر | آکادمی ۵ ستاره & Toronto Events</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0a0a2a 0%, #1a0a2e 100%);
+            background: linear-gradient(135deg, #0a0a2a 0%, #1a0a2e 50%, #0a0a2a 100%);
             font-family: 'Segoe UI', 'Vazir', system-ui, -apple-system, sans-serif;
             overflow-x: hidden;
             color: #eee;
@@ -30,22 +30,20 @@
             position: relative;
         }
         .hero h1 {
-            font-size: 4rem;
-            background: linear-gradient(135deg, #FFD700, #FFA500, #FF6B35, #FF1493);
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #FFD700, #FF6B35, #FF1493, #00BFFF);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            letter-spacing: -1px;
-            text-shadow: 0 0 30px rgba(255, 165, 0, 0.3);
-            animation: glow 2s ease-in-out infinite;
+            animation: glow 3s ease-in-out infinite;
         }
         @keyframes glow {
             0%, 100% { text-shadow: 0 0 20px rgba(255,215,0,0.3); }
             50% { text-shadow: 0 0 40px rgba(255,215,0,0.6); }
         }
         .hero p {
-            font-size: 1.2rem;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
+            font-size: 1rem;
+            background: linear-gradient(135deg, #FFD700, #FF6B35);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
@@ -55,11 +53,25 @@
             padding-top: 0.8rem;
         }
 
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin: 3rem 0 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #FFD700;
+            display: inline-block;
+            width: auto;
+        }
+
+        .title-wrapper {
+            text-align: center;
+        }
+
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 2.5rem;
-            margin: 3rem 0;
+            margin: 2rem 0 4rem;
         }
 
         .poster-frame {
@@ -69,6 +81,7 @@
             box-shadow: 0 20px 35px -10px rgba(0,0,0,0.7);
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 165, 0, 0.3);
+            position: relative;
         }
         .poster-frame:hover {
             transform: translateY(-10px) scale(1.02);
@@ -76,11 +89,24 @@
             border-color: #FFD700;
         }
 
-        .poster-canvas {
+        .poster-img {
             width: 100%;
             aspect-ratio: 2 / 2.8;
             display: block;
+            object-fit: cover;
+            position: relative;
         }
+        
+        .overlay-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.4), transparent);
+            padding: 1.5rem 1rem 0.8rem;
+            border-radius: 0 0 32px 32px;
+        }
+        
         .poster-caption {
             padding: 1rem;
             text-align: center;
@@ -161,6 +187,7 @@
             .container { padding: 1rem; }
             .email { font-size: 0.8rem; }
             .gallery { grid-template-columns: 1fr; gap: 1.5rem; }
+            .section-title { font-size: 1.3rem; }
         }
     </style>
 </head>
@@ -168,260 +195,121 @@
 
 <div class="container">
     <div class="hero">
-        <h1>✨ آکادمی ۵ ستاره ✨</h1>
-        <p>مهدکودک و پیش‌دبستانی | پوسترهای حرفه‌ای و جذاب</p>
+        <h1>✨ نمونه کارهای حرفه‌ای ✨</h1>
+        <p>طراحی پوستر | آکادمی ۵ ستاره | رویدادهای تورنتو</p>
     </div>
 
-    <div class="gallery" id="posterGallery"></div>
+    <div class="title-wrapper">
+        <span class="section-title">🎓 آکادمی ۵ ستاره</span>
+    </div>
+    <div class="gallery" id="academyGallery"></div>
+
+    <div class="title-wrapper">
+        <span class="section-title">🌆 Toronto Events</span>
+    </div>
+    <div class="gallery" id="torontoGallery"></div>
 
     <div class="contact-box">
-        <p>🎨 طراحی اختصاصی پوستر برای آکادمی ۵ ستاره</p>
+        <p>🎨 طراحی اختصاصی پوستر برای برندها، رویدادها و کسب‌وکارها</p>
         <div class="email">avinlangroodi4@gmail.com</div>
         <br>
-        <a href="#" class="btn" id="contactFakeBtn">📩 سفارش طراحی پوستر حرفه‌ای</a>
-        <a href="#" class="btn btn-outline" id="moreFakeBtn">📁 مشاهده نمونه کارهای بیشتر</a>
+        <a href="#" class="btn" id="contactFakeBtn">📩 سفارش طراحی حرفه‌ای</a>
+        <a href="#" class="btn btn-outline" id="moreFakeBtn">📁 نمونه کارهای بیشتر</a>
     </div>
     <footer>
-        © تمامی پوسترها با کیفیت چاپ بالا | طراحی شده برای آکادمی ۵ ستاره ⭐
+        © تمامی پوسترها با کیفیت چاپ بالا | طراحی شده توسط طراح حرفه‌ای گرافیک
     </footer>
 </div>
 
 <script>
     (function() {
-        function drawGraduation(canvas) {
-            const ctx = canvas.getContext('2d');
-            const w = canvas.width, h = canvas.height;
-            
-            const grad = ctx.createLinearGradient(0, 0, 0, h);
-            grad.addColorStop(0, '#1a0a3e');
-            grad.addColorStop(0.5, '#2d1a5e');
-            grad.addColorStop(1, '#0a0a2a');
-            ctx.fillStyle = grad;
-            ctx.fillRect(0, 0, w, h);
-            
-            for(let i = 0; i < 200; i++) {
-                ctx.beginPath();
-                ctx.arc(10 + Math.random() * (w - 20), 10 + Math.random() * (h - 20), 1 + Math.random() * 3, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 215, 0, ${0.1 + Math.random() * 0.4})`;
-                ctx.fill();
+        const academyPosters = [
+            {
+                title: "🎓 جشن کف‌پارتی 🎓",
+                desc: "فارغ‌التحصیلی کوچولوهای موفق | مدال طلا + پذیرایی ویژه | ۲۰ اسفند ۱۴۰۴",
+                img: "https://images.pexels.com/photos/8613078/pexels-photo-8613078.jpeg?w=700&h=980&fit=crop",
+                overlayTitle: "جشن فارغ‌التحصیلی",
+                overlayDate: "۲۰ اسفند ۱۴۰۴"
+            },
+            {
+                title: "📝 ثبت‌نام آغاز شد 📝",
+                desc: "شروع ترم بهار ۱۴۰۵ | تخفیف ویژه ۳۰٪ تا پایان اسفند | همراه با هدیه و کیف",
+                img: "https://images.pexels.com/photos/8423124/pexels-photo-8423124.jpeg?w=700&h=980&fit=crop",
+                overlayTitle: "ثبت‌نام آغاز شد",
+                overlayDate: "تخفیف ۳۰٪"
             }
-            
-            for(let s = 0; s < 30; s++) {
-                ctx.beginPath();
-                ctx.moveTo(30 + Math.random() * w, 40 + Math.random() * 150);
-                for(let i = 0; i < 5; i++) {
-                    ctx.lineTo(30 + Math.random() * w, 40 + Math.random() * 150);
-                }
-                ctx.fillStyle = `rgba(255, 100, 150, ${0.1 + Math.random() * 0.3})`;
-                ctx.fill();
+        ];
+
+        const torontoPosters = [
+            {
+                title: "🍁 Toronto Festival 🍁",
+                desc: "International Music & Arts Festival | June 15-20, 2025 | Downtown Toronto",
+                img: "https://images.pexels.com/photos/1486222/pexels-photo-1486222.jpeg?w=700&h=980&fit=crop",
+                overlayTitle: "Toronto Festival",
+                overlayDate: "June 15-20, 2025"
+            },
+            {
+                title: "💼 Tech Summit Toronto 💼",
+                desc: "Annual Technology Conference | Innovation • AI • Future | Register Now",
+                img: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?w=700&h=980&fit=crop",
+                overlayTitle: "Tech Summit",
+                overlayDate: "Toronto 2025"
             }
+        ];
+
+        function createPosterElement(poster, isAcademy = true) {
+            const frame = document.createElement('div');
+            frame.className = 'poster-frame';
             
-            ctx.beginPath();
-            ctx.arc(w/2.5, h/3.2, 45, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(255, 215, 0, 0.15)';
-            ctx.fill();
-            ctx.strokeStyle = '#FFD700';
-            ctx.lineWidth = 3;
-            ctx.stroke();
+            const imgWrapper = document.createElement('div');
+            imgWrapper.style.position = 'relative';
+            imgWrapper.style.width = '100%';
+            imgWrapper.style.aspectRatio = '2 / 2.8';
             
-            ctx.font = `bold ${Math.floor(w/7)}px "Segoe UI"`;
-            ctx.fillStyle = '#FFD700';
-            ctx.fillText("🎓", w/2.8, h/2.8);
+            const img = document.createElement('img');
+            img.src = poster.img;
+            img.alt = poster.title;
+            img.className = 'poster-img';
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.objectFit = 'cover';
             
-            ctx.font = `bold ${Math.floor(w/14)}px "Vazir", "Segoe UI"`;
-            ctx.fillStyle = '#FFD700';
-            ctx.shadowBlur = 8;
-            ctx.shadowColor = '#FFA500';
-            ctx.fillText("جشن فارغ‌التحصیلی", w/5.5, h/2.2);
+            const overlay = document.createElement('div');
+            overlay.className = 'overlay-text';
+            overlay.innerHTML = `
+                <h3 style="color: #FFD700; font-size: 1.3rem; margin-bottom: 0.3rem;">${poster.overlayTitle}</h3>
+                <p style="color: #FFA500; font-size: 0.9rem;">${poster.overlayDate}</p>
+            `;
             
-            ctx.font = `${Math.floor(w/18)}px "Vazir", "Segoe UI"`;
-            ctx.fillStyle = '#FFCC66';
-            ctx.fillText("کف‌پارتی کوچولوهای موفق", w/6, h/1.65);
+            imgWrapper.appendChild(img);
+            imgWrapper.appendChild(overlay);
             
-            ctx.font = `${Math.floor(w/22)}px "Vazir", "Segoe UI"`;
-            ctx.fillStyle = '#fff';
-            ctx.fillText("⭐ ۵ ستاره‌های آینده ⭐", w/4.5, h/1.35);
+            const caption = document.createElement('div');
+            caption.className = 'poster-caption';
+            caption.innerHTML = `<h3>${poster.title}</h3><p>${poster.desc}</p>`;
             
-            ctx.font = `${Math.floor(w/26)}px "Vazir", "Segoe UI"`;
-            ctx.fillStyle = '#aaa';
-            ctx.fillText("پذیرایی | مدال | جایزه | سرگرمی", w/5, h/1.15);
-            
-            ctx.fillStyle = '#FFA500';
-            ctx.fillRect(0, h-50, w, 5);
-            ctx.fillStyle = '#FFD700';
-            ctx.fillRect(0, h-45, w, 2);
-            
-            ctx.shadowBlur = 0;
+            frame.appendChild(imgWrapper);
+            frame.appendChild(caption);
+            return frame;
         }
 
-        function drawRegistration(canvas) {
-            const ctx = canvas.getContext('2d');
-            const w = canvas.width, h = canvas.height;
+        function renderGalleries() {
+            const academyGallery = document.getElementById('academyGallery');
+            const torontoGallery = document.getElementById('torontoGallery');
             
-            const gradBg = ctx.createLinearGradient(0, 0, w, h);
-            gradBg.addColorStop(0, '#0a2a3a');
-            gradBg.addColorStop(0.5, '#1a3a4a');
-            gradBg.addColorStop(1, '#0a1a2a');
-            ctx.fillStyle = gradBg;
-            ctx.fillRect(0, 0, w, h);
+            academyGallery.innerHTML = '';
+            torontoGallery.innerHTML = '';
             
-            for(let i = 0; i < 120; i++) {
-                ctx.beginPath();
-                ctx.arc(5 + Math.random() * (w - 10), 5 + Math.random() * (h - 10), 2 + Math.random() * 5, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 215, 0, ${0.1 + Math.random() * 0.3})`;
-                ctx.fill();
-            }
+            academyPosters.forEach(poster => {
+                academyGallery.appendChild(createPosterElement(poster, true));
+            });
             
-            for(let i = 0; i < 5; i++) {
-                ctx.beginPath();
-                ctx.rect(15 + i*70, h-120, 25, 80);
-                ctx.fillStyle = `rgba(255, 165, 0, ${0.15 + i*0.07})`;
-                ctx.fill();
-                ctx.beginPath();
-                ctx.rect(30 + i*70, h-130, 15, 50);
-                ctx.fillStyle = `rgba(255, 215, 0, ${0.2 + i*0.05})`;
-                ctx.fill();
-            }
-            
-            ctx.font = `bold ${Math.floor(w/6.5)}px "Segoe UI"`;
-            ctx.fillStyle = '#FFD700';
-            ctx.fillText("📝", w/2.3, h/3.2);
-            
-            ctx.font = `bold ${Math.floor(w/12)}px "Vazir", "Segoe UI"`;
-            ctx.fillStyle = '#FFD700';
-            ctx.shadowBlur = 5;
-            ctx.shadowColor = '#FF8C00';
-            ctx.fillText("ثبت‌نام آغاز شد", w/5, h/2.2);
-            
-            ctx.font = `${Math.floor(w/18)}px "Vazir", "Segoe UI"`;
-            ctx.fillStyle = '#FFA500';
-            ctx.fillText("🎁 تخفیف ویژه ۳۰٪ 🎁", w/4.2, h/1.65);
-            
-            ctx.font = `${Math.floor(w/22)}px "Vazir", "Segoe UI"`;
-            ctx.fillStyle = '#FFCC66';
-            ctx.fillText("همراه با هدیه ثبت‌نام و کیف آموزشی", w/8, h/1.4);
-            
-            ctx.font = `bold ${Math.floor(w/26)}px "Vazir", "Segoe UI"`;
-            ctx.fillStyle = '#fff';
-            ctx.fillText("شماره تماس: ۰۲۱-۵۵۵۵۵۵۵۵", w/5.5, h/1.18);
-            
-            ctx.fillStyle = '#FFD700';
-            ctx.fillRect(0, h-50, w, 3);
-            
-            ctx.fillStyle = '#FFA500';
-            for(let i = 0; i < 12; i++) {
-                ctx.beginPath();
-                ctx.moveTo(30 + i*50, h-65);
-                ctx.lineTo(40 + i*50, h-80);
-                ctx.lineTo(50 + i*50, h-65);
-                ctx.fill();
-            }
-            
-            ctx.shadowBlur = 0;
-        }
-
-        function drawParentsMeeting(canvas) {
-            const ctx = canvas.getContext('2d');
-            const w = canvas.width, h = canvas.height;
-            
-            const gradBg = ctx.createLinearGradient(0, 0, 0, h);
-            gradBg.addColorStop(0, '#2a1a3e');
-            gradBg.addColorStop(0.5, '#1a0a2e');
-            gradBg.addColorStop(1, '#0a0a1a');
-            ctx.fillStyle = gradBg;
-            ctx.fillRect(0, 0, w, h);
-            
-            for(let i = 0; i < 30; i++) {
-                ctx.beginPath();
-                ctx.arc(20 + i*40, h-60, 8, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 100, 150, ${0.1})`;
-                ctx.fill();
-                ctx.strokeStyle = `rgba(255, 215, 0, ${0.2})`;
-                ctx.stroke();
-            }
-            
-            ctx.beginPath();
-            ctx.arc(w/2, h/2.8, 65, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(255, 215, 0, 0.12)';
-            ctx.fill();
-            ctx.strokeStyle = '#FFD700';
-            ctx.lineWidth = 2.5;
-            ctx.setLineDash([5, 10]);
-            ctx.stroke();
-            ctx.setLineDash([]);
-            
-            ctx.beginPath();
-            ctx.arc(w/2, h/2.8, 50, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(255, 165, 0, 0.08)';
-            ctx.fill();
-            
-            ctx.font = `bold ${Math.floor(w/6)}px "Segoe UI"`;
-            ctx.fillStyle = '#FFD700';
-            ctx.fillText("👪", w/2.4, h/2.5);
-            
-            ctx.font = `bold ${Math.floor(w/13)}px "Vazir", "Segoe UI"`;
-            ctx.fillStyle = '#FFD700';
-            ctx.shadowBlur = 6;
-            ctx.shadowColor = '#FFA500';
-            ctx.fillText("جلسه اولیا و مربیان", w/10, h/2.05);
-            
-            ctx.font = `${Math.floor(w/20)}px "Vazir", "Segoe UI"`;
-            ctx.fillStyle = '#FFCC66';
-            ctx.fillText("🍎 سه‌شنبه ۳۰ اسفند ۱۴۰۴ 🍎", w/7, h/1.6);
-            
-            ctx.font = `${Math.floor(w/24)}px "Vazir", "Segoe UI"`;
-            ctx.fillStyle = '#fff';
-            ctx.fillText("ساعت ۱۶ تا ۱۸ | سالن اجتماعات آکادمی", w/11, h/1.4);
-            
-            ctx.font = `${Math.floor(w/28)}px "Vazir", "Segoe UI"`;
-            ctx.fillStyle = '#aaa';
-            ctx.fillText("همراه با پذیرایی و کارگاه آموزشی", w/8, h/1.23);
-            
-            ctx.fillStyle = '#FFD700';
-            ctx.fillRect(0, h-45, w, 4);
-            
-            for(let i = 0; i < 20; i++) {
-                ctx.beginPath();
-                ctx.moveTo(10 + i*45, h-35);
-                ctx.lineTo(25 + i*45, h-55);
-                ctx.lineTo(40 + i*45, h-35);
-                ctx.fillStyle = `rgba(255, 215, 0, 0.3)`;
-                ctx.fill();
-            }
-            
-            ctx.shadowBlur = 0;
-        }
-
-        function renderAllPosters() {
-            const gallery = document.getElementById('posterGallery');
-            gallery.innerHTML = '';
-            
-            const posters = [
-                { draw: drawGraduation, title: "🎓 جشن کف‌پارتی 🎓", desc: "فارغ‌التحصیلی کوچولوهای موفق | مدال طلا + پذیرایی ویژه | ۲۰ اسفند ۱۴۰۴" },
-                { draw: drawRegistration, title: "📝 ثبت‌نام آغاز شد 📝", desc: "شروع ترم بهار ۱۴۰۵ | تخفیف ویژه ۳۰٪ تا پایان اسفند | همراه با هدیه و کیف" },
-                { draw: drawParentsMeeting, title: "👨‍👩‍👧 جلسه اولیا و مربیان 👨‍👩‍👧", desc: "همکاری برای آینده بهتر | سه‌شنبه ۳۰ اسفند | ساعت ۱۶ | حضور شما ارزشمند است" }
-            ];
-            
-            for(let i = 0; i < posters.length; i++) {
-                const frame = document.createElement('div');
-                frame.className = 'poster-frame';
-                
-                const canvas = document.createElement('canvas');
-                canvas.width = 700;
-                canvas.height = 980;
-                canvas.className = 'poster-canvas';
-                posters[i].draw(canvas);
-                
-                const caption = document.createElement('div');
-                caption.className = 'poster-caption';
-                caption.innerHTML = `<h3>${posters[i].title}</h3><p>${posters[i].desc}</p>`;
-                frame.appendChild(canvas);
-                frame.appendChild(caption);
-                gallery.appendChild(frame);
-            }
+            torontoPosters.forEach(poster => {
+                torontoGallery.appendChild(createPosterElement(poster, false));
+            });
         }
         
-        renderAllPosters();
+        renderGalleries();
 
         document.getElementById('contactFakeBtn')?.addEventListener('click', (e) => {
             e.preventDefault();
@@ -429,7 +317,7 @@
         });
         document.getElementById('moreFakeBtn')?.addEventListener('click', (e) => {
             e.preventDefault();
-            alert("🎨 نمونه پوسترهای حرفه‌ای بیشتری برای آکادمی ۵ ستاره آماده دارم. از طریق ایمیل درخواست بدید تا براتون ارسال کنم.");
+            alert("🎨 نمونه پوسترهای حرفه‌ای بیشتری آماده دارم. از طریق ایمیل درخواست بدید تا براتون ارسال کنم.");
         });
     })();
 </script>
