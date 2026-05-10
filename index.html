@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>پوسترهای سینمایی | افکت‌های حرفه‌ای شبیه افترافکت</title>
+    <title>پوسترهای حرفه‌ای | اسلایدشو محو شونده | افکت افترافکت</title>
     <style>
         * {
             margin: 0;
@@ -24,15 +24,13 @@
             padding: 2rem 1.8rem;
         }
 
-        /* هدر با افکت نئون متحرک شبیه موشن گرافیک */
+        /* هدر با افکت نئون متحرک */
         .hero {
             text-align: center;
             margin-bottom: 4rem;
-            position: relative;
         }
         .hero h1 {
             font-size: 4rem;
-            letter-spacing: 3px;
             background: linear-gradient(90deg, #FFD700, #FF1493, #00FFFF, #FFD700);
             background-size: 300% auto;
             background-clip: text;
@@ -89,7 +87,7 @@
             margin: 2rem 0 5rem;
         }
 
-        /* ========== کارت پوستر با افکت‌های سینمایی ========= */
+        /* کارت پوستر با اسلایدشو */
         .poster-frame {
             position: relative;
             border-radius: 32px;
@@ -111,25 +109,34 @@
             animation: none;
         }
 
-        .img-wrapper {
+        .slideshow-container {
             position: relative;
             width: 100%;
             aspect-ratio: 2 / 2.8;
             overflow: hidden;
         }
-        .poster-img {
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: filter 0.5s, transform 0.6s;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
             filter: brightness(1.02) contrast(1.08) saturate(1.15);
         }
-        .poster-frame:hover .poster-img {
-            transform: scale(1.05);
-            filter: brightness(1.12) contrast(1.12) saturate(1.25);
+        .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+        .poster-frame:hover .slide {
+            filter: brightness(1.1) contrast(1.12) saturate(1.25);
+            transform: scale(1.02);
+            transition: transform 0.5s, filter 0.5s;
         }
 
-        /* ---------- افکت glitch روی عکس (حرکت تصادفی نوری) ---------- */
+        /* افکت glitch روی کل عکس‌ها */
         .glitch-overlay {
             position: absolute;
             top: 0;
@@ -150,7 +157,7 @@
             100% { transform: translateY(100%); opacity: 0; }
         }
 
-        /* افکت نئون درخشان در حاشیه (مثل AE) */
+        /* نئون border متحرک */
         .neon-border {
             position: absolute;
             top: -2px;
@@ -173,7 +180,6 @@
             100% { filter: blur(8px) hue-rotate(360deg);}
         }
 
-        /* بج های متحرک */
         .badge {
             position: absolute;
             top: 20px;
@@ -186,9 +192,8 @@
             font-weight: bold;
             color: #FFD700;
             border: 1px solid rgba(255,215,0,0.8);
-            z-index: 5;
+            z-index: 10;
             font-family: monospace;
-            letter-spacing: 1px;
             animation: badgePulse 1.5s infinite;
         }
         @keyframes badgePulse {
@@ -205,7 +210,7 @@
             padding: 0.5rem 0.9rem;
             border-radius: 50%;
             font-size: 1.5rem;
-            z-index: 5;
+            z-index: 10;
             border: 1px solid gold;
             animation: rotateIcon 3s linear infinite;
         }
@@ -214,7 +219,6 @@
             100% { transform: rotate(360deg);}
         }
 
-        /* متن پایین عکس با انیمیشن درخشش */
         .overlay-text {
             position: absolute;
             bottom: 0;
@@ -223,7 +227,7 @@
             background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.5), transparent);
             padding: 1.8rem 1rem 1rem;
             backdrop-filter: blur(4px);
-            z-index: 4;
+            z-index: 5;
         }
         .overlay-text h3 {
             font-size: 1.5rem;
@@ -242,7 +246,6 @@
             color: #FFD700;
             font-size: 0.8rem;
             text-shadow: 0 0 8px black;
-            letter-spacing: 1px;
         }
 
         .poster-caption {
@@ -258,7 +261,6 @@
             color: transparent;
         }
 
-        /* دکمه های شناور */
         .contact-box {
             background: rgba(0,0,0,0.6);
             backdrop-filter: blur(20px);
@@ -281,6 +283,10 @@
             border-radius: 40px;
             font-weight: bold;
             transition: 0.3s;
+            display: inline-block;
+            margin: 0.5rem;
+            text-decoration: none;
+            color: #1a1a2e;
         }
         .btn:hover {
             transform: scale(1.05);
@@ -302,142 +308,182 @@
 <div class="container">
     <div class="hero">
         <h1>⚡ MOTION POSTERS ⚡</h1>
-        <p>طراحی شبیه افترافکت | افکت‌های نئون | موشن گرافیک حرفه‌ای</p>
+        <p>اسلایدشو محو شونده | افکت‌های سینمایی شبیه افترافکت</p>
     </div>
 
-    <!-- بخش 1 -->
     <div class="title-wrapper"><span class="section-title">🎈 کف‌پارتی | جشن فارغ‌التحصیلی</span></div>
     <div class="gallery" id="gradGallery"></div>
 
-    <!-- بخش 2 -->
     <div class="title-wrapper"><span class="section-title">📝 ثبت‌نام آکادمی ۵ ستاره</span></div>
     <div class="gallery" id="regGallery"></div>
 
-    <!-- بخش 3 -->
     <div class="title-wrapper"><span class="section-title">🌆 Toronto Events</span></div>
     <div class="gallery" id="torontoGallery"></div>
 
-    <!-- بخش 4: فرشاد سایلنت -->
-    <div class="title-wrapper"><span class="section-title">🎬 ویدیوی ویژه | برج خلیفه</span></div>
+    <div class="title-wrapper"><span class="section-title">🎬 ویدیوی ویژه | فرشاد سایلنت در برج خلیفه</span></div>
     <div class="gallery" id="silentGallery"></div>
 
     <div class="contact-box">
-        <p>✨ طراحی پوستر با استایل سینمایی و افکت‌های حرفه‌ای (After Effects style) ✨</p>
+        <p>✨ طراحی پوستر با اسلایدشوهای حرفه‌ای و افکت‌های موشن گرافیک ✨</p>
         <div class="email">avinlangroodi4@gmail.com</div><br>
         <a href="#" class="btn" id="contactBtn">سفارش طراحی</a>
-        <a href="#" class="btn btn-outline" id="moreBtn">نمونه بیشتر</a>
+        <a href="#" class="btn" id="moreBtn">نمونه بیشتر</a>
     </div>
-    <footer>© تمام پوسترها دارای افکت‌های موشن و درخشش نئون هستند | طراحی شبیه افترافکت</footer>
+    <footer>© هر بخش دارای ۳ عکس با قابلیت محو شدن خودکار | استایل سینمایی و نئون</footer>
 </div>
 
 <script>
     (function() {
-        // دیتاهای پوسترها با عکس‌های خوب و متن
-        const graduation = {
+        // آرایه عکس‌ها برای هر بخش (هر کدام ۳ عکس مرتبط)
+        const gradImages = [
+            "https://images.pexels.com/photos/8613088/pexels-photo-8613088.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/8613081/pexels-photo-8613081.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/8613080/pexels-photo-8613080.jpeg?w=700&h=980&fit=crop"
+        ];
+        const regImages = [
+            "https://images.pexels.com/photos/8613083/pexels-photo-8613083.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/8613075/pexels-photo-8613075.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/8423124/pexels-photo-8423124.jpeg?w=700&h=980&fit=crop"
+        ];
+        const toronto1Images = [
+            "https://images.pexels.com/photos/1486222/pexels-photo-1486222.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/2903860/pexels-photo-2903860.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?w=700&h=980&fit=crop"
+        ];
+        const toronto2Images = [
+            "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?w=700&h=980&fit=crop"
+        ];
+        const silentImages = [
+            "https://images.pexels.com/photos/2903860/pexels-photo-2903860.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/258117/pexels-photo-258117.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/1268855/pexels-photo-1268855.jpeg?w=700&h=980&fit=crop"
+        ];
+
+        // دیتای هر کارت (متن، بج، آیکون، عکس‌ها)
+        const graduationData = {
             title: "🎓 جشن کف‌پارتی",
             desc: "فارغ‌التحصیلی کوچولوهای موفق | مدال طلا | ۲۰ اسفند",
-            img: "https://images.pexels.com/photos/8613088/pexels-photo-8613088.jpeg?w=700&h=980&fit=crop",
             overlayTitle: "Graduation Party",
             overlayDate: "🎈 ۲۰ اسفند ۱۴۰۴ | آکادمی ۵ ستاره",
             badge: "⭐ CLASS OF 2025",
-            icon: "🎉"
+            icon: "🎉",
+            images: gradImages
         };
-        const registration = {
+        const registrationData = {
             title: "📝 ثبت‌نام آغاز شد",
             desc: "تخفیف ۳۰٪ | هدیه ثبت‌نام | شروع ترم بهار",
-            img: "https://images.pexels.com/photos/8613083/pexels-photo-8613083.jpeg?w=700&h=980&fit=crop",
             overlayTitle: "Enrollment Open",
             overlayDate: "🔥 تخفیف ۳۰٪ تا پایان اسفند",
             badge: "🎁 OFFER 30%",
-            icon: "📚"
+            icon: "📚",
+            images: regImages
         };
-        const toronto1 = {
+        const toronto1Data = {
             title: "🍁 Toronto Festival",
             desc: "Music • Art • Culture | June 15-20, 2025",
-            img: "https://images.pexels.com/photos/1486222/pexels-photo-1486222.jpeg?w=700&h=980&fit=crop",
             overlayTitle: "Toronto Fest 2025",
             overlayDate: "🎶 Nathan Phillips Square",
             badge: "🌟 SUMMER 2025",
-            icon: "🍁"
+            icon: "🍁",
+            images: toronto1Images
         };
-        const toronto2 = {
+        const toronto2Data = {
             title: "💼 Tech Summit",
             desc: "AI • Innovation | Metro Convention Centre",
-            img: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?w=700&h=980&fit=crop",
             overlayTitle: "Tech Summit Toronto",
             overlayDate: "🚀 Limited Seats",
             badge: "💡 INNOVATION",
-            icon: "⚡"
+            icon: "⚡",
+            images: toronto2Images
         };
-        const silent = {
+        const silentData = {
             title: "🎥 فرشاد سایلنت | برج خلیفه",
             desc: "ویدیو گردش اختصاصی در بلندترین برج جهان | تماشا کنید",
-            img: "https://images.pexels.com/photos/2903860/pexels-photo-2903860.jpeg?w=700&h=980&fit=crop",
             overlayTitle: "Burj Khalifa | Dubai",
             overlayDate: "▶️ جدیدترین ویدیو | فرشاد سایلنت",
             badge: "🔥 NEW EPISODE",
-            icon: "🎬"
+            icon: "🎬",
+            images: silentImages
         };
 
-        function createCard(p) {
+        // تابع ساخت کارت با اسلایدشو
+        function createSlideshowCard(data) {
             const frame = document.createElement('div');
             frame.className = 'poster-frame';
-            // اضافه کردن نئون border
+            
             const neonBorder = document.createElement('div');
             neonBorder.className = 'neon-border';
             frame.appendChild(neonBorder);
             
-            const imgWrap = document.createElement('div');
-            imgWrap.className = 'img-wrapper';
+            const slideshowDiv = document.createElement('div');
+            slideshowDiv.className = 'slideshow-container';
             
-            const img = document.createElement('img');
-            img.src = p.img;
-            img.alt = p.title;
-            img.className = 'poster-img';
+            // ساخت تصاویر
+            const slides = [];
+            data.images.forEach((url, idx) => {
+                const img = document.createElement('img');
+                img.src = url;
+                img.alt = `${data.title} - ${idx+1}`;
+                img.className = 'slide';
+                if (idx === 0) img.classList.add('active');
+                slideshowDiv.appendChild(img);
+                slides.push(img);
+            });
             
+            // افکت glitch
             const glitch = document.createElement('div');
             glitch.className = 'glitch-overlay';
+            slideshowDiv.appendChild(glitch);
             
+            // بج‌ها
             const badge = document.createElement('div');
             badge.className = 'badge';
-            badge.innerText = p.badge;
+            badge.innerText = data.badge;
+            slideshowDiv.appendChild(badge);
             
             const iconBadge = document.createElement('div');
             iconBadge.className = 'icon-badge';
-            iconBadge.innerText = p.icon;
+            iconBadge.innerText = data.icon;
+            slideshowDiv.appendChild(iconBadge);
             
+            // متن روی عکس
             const overlayDiv = document.createElement('div');
             overlayDiv.className = 'overlay-text';
-            overlayDiv.innerHTML = `
-                <h3>${p.overlayTitle}</h3>
-                <p>${p.overlayDate}</p>
-            `;
+            overlayDiv.innerHTML = `<h3>${data.overlayTitle}</h3><p>${data.overlayDate}</p>`;
+            slideshowDiv.appendChild(overlayDiv);
             
-            imgWrap.appendChild(img);
-            imgWrap.appendChild(glitch);
-            imgWrap.appendChild(badge);
-            imgWrap.appendChild(iconBadge);
-            imgWrap.appendChild(overlayDiv);
+            frame.appendChild(slideshowDiv);
             
+            // کپشن پایین
             const caption = document.createElement('div');
             caption.className = 'poster-caption';
-            caption.innerHTML = `<h3>${p.title}</h3><p>${p.desc}</p>`;
-            
-            frame.appendChild(imgWrap);
+            caption.innerHTML = `<h3>${data.title}</h3><p>${data.desc}</p>`;
             frame.appendChild(caption);
+            
+            // اسلایدشو خودکار با fade (هر 4 ثانیه)
+            let currentIndex = 0;
+            setInterval(() => {
+                slides[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % slides.length;
+                slides[currentIndex].classList.add('active');
+            }, 4000);
+            
             return frame;
         }
 
+        // رندر کردن گالری‌ها
         const gradGal = document.getElementById('gradGallery');
         const regGal = document.getElementById('regGallery');
         const torGal = document.getElementById('torontoGallery');
         const silGal = document.getElementById('silentGallery');
         
-        gradGal.appendChild(createCard(graduation));
-        regGal.appendChild(createCard(registration));
-        torGal.appendChild(createCard(toronto1));
-        torGal.appendChild(createCard(toronto2));
-        silGal.appendChild(createCard(silent));
+        gradGal.appendChild(createSlideshowCard(graduationData));
+        regGal.appendChild(createSlideshowCard(registrationData));
+        torGal.appendChild(createSlideshowCard(toronto1Data));
+        torGal.appendChild(createSlideshowCard(toronto2Data));
+        silGal.appendChild(createSlideshowCard(silentData));
         
         document.getElementById('contactBtn').onclick = (e) => {
             e.preventDefault();
@@ -445,7 +491,7 @@
         };
         document.getElementById('moreBtn').onclick = (e) => {
             e.preventDefault();
-            alert("✨ نمونه پوسترهای بیشتری با افکت‌های افترافکتی آماده دارم.");
+            alert("✨ نمونه پوسترهای بیشتری با اسلایدشو و افکت‌های سینمایی آماده دارم.");
         };
     })();
 </script>
