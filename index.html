@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>پوسترهای حرفه‌ای | اسلایدشو محو شونده | افکت افترافکت</title>
+    <title>پوسترهای حرفه‌ای | آکادمی ۵ ستاره، دبی، ونکوور، کلگری، AI</title>
     <style>
         * {
             margin: 0;
@@ -24,7 +24,6 @@
             padding: 2rem 1.8rem;
         }
 
-        /* هدر با افکت نئون متحرک */
         .hero {
             text-align: center;
             margin-bottom: 4rem;
@@ -82,12 +81,11 @@
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 3rem;
-            margin: 2rem 0 5rem;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2.5rem;
+            margin: 2rem 0 4rem;
         }
 
-        /* کارت پوستر با اسلایدشو */
         .poster-frame {
             position: relative;
             border-radius: 32px;
@@ -136,7 +134,6 @@
             transition: transform 0.5s, filter 0.5s;
         }
 
-        /* افکت glitch روی کل عکس‌ها */
         .glitch-overlay {
             position: absolute;
             top: 0;
@@ -157,7 +154,6 @@
             100% { transform: translateY(100%); opacity: 0; }
         }
 
-        /* نئون border متحرک */
         .neon-border {
             position: absolute;
             top: -2px;
@@ -308,192 +304,181 @@
 <div class="container">
     <div class="hero">
         <h1>⚡ MOTION POSTERS ⚡</h1>
-        <p>اسلایدشو محو شونده | افکت‌های سینمایی شبیه افترافکت</p>
+        <p>اسلایدشو محو شونده | دبی، ونکوور، کلگری | هوش مصنوعی و رویدادهای جهانی</p>
     </div>
 
-    <div class="title-wrapper"><span class="section-title">🎈 کف‌پارتی | جشن فارغ‌التحصیلی</span></div>
-    <div class="gallery" id="gradGallery"></div>
+    <!-- بخش‌های آکادمی ۵ ستاره -->
+    <div class="title-wrapper"><span class="section-title">🎈 کف‌پارتی | مهمانی روی زمین</span></div>
+    <div class="gallery" id="floorPartyGallery"></div>
+
+    <div class="title-wrapper"><span class="section-title">🎓 جشن فارغ‌التحصیلی | کلاه و لباس مخصوص</span></div>
+    <div class="gallery" id="graduationGallery"></div>
 
     <div class="title-wrapper"><span class="section-title">📝 ثبت‌نام آکادمی ۵ ستاره</span></div>
     <div class="gallery" id="regGallery"></div>
 
-    <div class="title-wrapper"><span class="section-title">🌆 Toronto Events</span></div>
-    <div class="gallery" id="torontoGallery"></div>
+    <!-- بخش دبی و فرشاد سایلنت (۲ پوستر مرتبط با دبی) -->
+    <div class="title-wrapper"><span class="section-title">🇦🇪 دبی | برج خلیفه & فرشاد سایلنت</span></div>
+    <div class="gallery" id="dubaiGallery"></div>
 
-    <div class="title-wrapper"><span class="section-title">🎬 ویدیوی ویژه | فرشاد سایلنت در برج خلیفه</span></div>
-    <div class="gallery" id="silentGallery"></div>
+    <!-- بخش ونکوور (۲ پوستر) -->
+    <div class="title-wrapper"><span class="section-title">🌊 ونکوور | جشنواره‌ها و رویدادها</span></div>
+    <div class="gallery" id="vancouverGallery"></div>
+
+    <!-- بخش کلگری (۲ پوستر هوش مصنوعی) -->
+    <div class="title-wrapper"><span class="section-title">🤖 کلگری | هوش مصنوعی و فناوری</span></div>
+    <div class="gallery" id="calgaryGallery"></div>
 
     <div class="contact-box">
-        <p>✨ طراحی پوستر با اسلایدشوهای حرفه‌ای و افکت‌های موشن گرافیک ✨</p>
+        <p>✨ طراحی پوستر با اسلایدشوهای حرفه‌ای، ۸ پوستر متفاوت، افکت‌های سینمایی ✨</p>
         <div class="email">avinlangroodi4@gmail.com</div><br>
         <a href="#" class="btn" id="contactBtn">سفارش طراحی</a>
         <a href="#" class="btn" id="moreBtn">نمونه بیشتر</a>
     </div>
-    <footer>© هر بخش دارای ۳ عکس با قابلیت محو شدن خودکار | استایل سینمایی و نئون</footer>
+    <footer>© هر پوستر دارای ۳ عکس با محو شدن خودکار | تلفیق آکادمی، دبی، ونکوور، کلگری و AI</footer>
 </div>
 
 <script>
     (function() {
-        // آرایه عکس‌ها برای هر بخش (هر کدام ۳ عکس مرتبط)
-        const gradImages = [
+        // ---------- 1. کف پارتی ----------
+        const floorPartyImages = [
+            "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/8613090/pexels-photo-8613090.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/8613091/pexels-photo-8613091.jpeg?w=700&h=980&fit=crop"
+        ];
+        // ---------- 2. فارغ‌التحصیلی ----------
+        const graduationImages = [
             "https://images.pexels.com/photos/8613088/pexels-photo-8613088.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/8613081/pexels-photo-8613081.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/8613080/pexels-photo-8613080.jpeg?w=700&h=980&fit=crop"
         ];
+        // ---------- 3. ثبت‌نام ----------
         const regImages = [
             "https://images.pexels.com/photos/8613083/pexels-photo-8613083.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/8613075/pexels-photo-8613075.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/8423124/pexels-photo-8423124.jpeg?w=700&h=980&fit=crop"
         ];
-        const toronto1Images = [
-            "https://images.pexels.com/photos/1486222/pexels-photo-1486222.jpeg?w=700&h=980&fit=crop",
-            "https://images.pexels.com/photos/2903860/pexels-photo-2903860.jpeg?w=700&h=980&fit=crop",
-            "https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?w=700&h=980&fit=crop"
-        ];
-        const toronto2Images = [
-            "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?w=700&h=980&fit=crop",
-            "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?w=700&h=980&fit=crop",
-            "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?w=700&h=980&fit=crop"
-        ];
-        const silentImages = [
+        // ---------- 4. دبی (فرشاد سایلنت + تور دبی) دو کارت ----------
+        const dubaiSilentImages = [
             "https://images.pexels.com/photos/2903860/pexels-photo-2903860.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/258117/pexels-photo-258117.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/1268855/pexels-photo-1268855.jpeg?w=700&h=980&fit=crop"
         ];
+        const dubaiTourImages = [
+            "https://images.pexels.com/photos/4701014/pexels-photo-4701014.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/1906567/pexels-photo-1906567.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/169195/pexels-photo-169195.jpeg?w=700&h=980&fit=crop"
+        ];
+        // ---------- 5. ونکوور (جشنواره، طبیعت، کانادا پلیس) ----------
+        const vancouverFestImages = [
+            "https://images.pexels.com/photos/1313512/pexels-photo-1313512.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/358500/pexels-photo-358500.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/357428/pexels-photo-357428.jpeg?w=700&h=980&fit=crop"
+        ];
+        const vancouverMarineImages = [
+            "https://images.pexels.com/photos/1630905/pexels-photo-1630905.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/1628786/pexels-photo-1628786.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/1613975/pexels-photo-1613975.jpeg?w=700&h=980&fit=crop"
+        ];
+        // ---------- 6. کلگری (AI و فناوری) ----------
+        const calgaryAI1Images = [
+            "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?w=700&h=980&fit=crop"
+        ];
+        const calgaryAI2Images = [
+            "https://images.pexels.com/photos/5473956/pexels-photo-5473956.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?w=700&h=980&fit=crop",
+            "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?w=700&h=980&fit=crop"
+        ];
 
-        // دیتای هر کارت (متن، بج، آیکون، عکس‌ها)
-        const graduationData = {
-            title: "🎓 جشن کف‌پارتی",
-            desc: "فارغ‌التحصیلی کوچولوهای موفق | مدال طلا | ۲۰ اسفند",
-            overlayTitle: "Graduation Party",
-            overlayDate: "🎈 ۲۰ اسفند ۱۴۰۴ | آکادمی ۵ ستاره",
-            badge: "⭐ CLASS OF 2025",
-            icon: "🎉",
-            images: gradImages
+        // اطلاعات همه کارت‌ها
+        const floorData = {
+            title: "🎈 کف‌پارتی پرانرژی", desc: "بازی، بادکنک، موسیقی شاد | ویژه بچه‌های آکادمی",
+            overlayTitle: "Floor Party", overlayDate: "🎉 مهمونی روی زمین | ۲۵ اسفند",
+            badge: "✨ FUN TIME", icon: "🎈", images: floorPartyImages
         };
-        const registrationData = {
-            title: "📝 ثبت‌نام آغاز شد",
-            desc: "تخفیف ۳۰٪ | هدیه ثبت‌نام | شروع ترم بهار",
-            overlayTitle: "Enrollment Open",
-            overlayDate: "🔥 تخفیف ۳۰٪ تا پایان اسفند",
-            badge: "🎁 OFFER 30%",
-            icon: "📚",
-            images: regImages
+        const gradData = {
+            title: "🎓 جشن فارغ‌التحصیلی", desc: "دریافت مدرک + کلاه و لباس مخصوص | ۲۰ اسفند",
+            overlayTitle: "Graduation Ceremony", overlayDate: "🎓 کلاه و لباس فارغ‌التحصیلی",
+            badge: "⭐ CLASS OF 2025", icon: "🎉", images: graduationImages
         };
-        const toronto1Data = {
-            title: "🍁 Toronto Festival",
-            desc: "Music • Art • Culture | June 15-20, 2025",
-            overlayTitle: "Toronto Fest 2025",
-            overlayDate: "🎶 Nathan Phillips Square",
-            badge: "🌟 SUMMER 2025",
-            icon: "🍁",
-            images: toronto1Images
+        const regData = {
+            title: "📝 ثبت‌نام آغاز شد", desc: "تخفیف ۳۰٪ | هدیه ثبت‌نام | شروع ترم بهار",
+            overlayTitle: "Enrollment Open", overlayDate: "🔥 تخفیف ۳۰٪ تا پایان اسفند",
+            badge: "🎁 OFFER 30%", icon: "📚", images: regImages
         };
-        const toronto2Data = {
-            title: "💼 Tech Summit",
-            desc: "AI • Innovation | Metro Convention Centre",
-            overlayTitle: "Tech Summit Toronto",
-            overlayDate: "🚀 Limited Seats",
-            badge: "💡 INNOVATION",
-            icon: "⚡",
-            images: toronto2Images
+        const dubaiSilentData = {
+            title: "🎥 فرشاد سایلنت | برج خلیفه", desc: "ویدیو گردش اختصاصی در بلندترین برج جهان | دبی",
+            overlayTitle: "Burj Khalifa | Dubai", overlayDate: "▶️ جدیدترین ویدیو | همین حالا",
+            badge: "🔥 NEW EPISODE", icon: "🎬", images: dubaiSilentImages
         };
-        const silentData = {
-            title: "🎥 فرشاد سایلنت | برج خلیفه",
-            desc: "ویدیو گردش اختصاصی در بلندترین برج جهان | تماشا کنید",
-            overlayTitle: "Burj Khalifa | Dubai",
-            overlayDate: "▶️ جدیدترین ویدیو | فرشاد سایلنت",
-            badge: "🔥 NEW EPISODE",
-            icon: "🎬",
-            images: silentImages
+        const dubaiTourData = {
+            title: "🇦🇪 لوکس تور دبی", desc: "سفر به دبی، برج خلیفه، دبی مال، فواره‌ها | تجربه‌ای رویایی",
+            overlayTitle: "Dubai Luxury Tour", overlayDate: "✨ رزرو تورهای ویژه ✨",
+            badge: "⭐ DUBAI EXPO", icon: "🕌", images: dubaiTourImages
+        };
+        const vanFestData = {
+            title: "🌊 Vancouver Summer Fest", desc: "جشنواره موسیقی، هنر و غذا | July 10-15, 2025",
+            overlayTitle: "Vancouver Fest 2025", overlayDate: "🎶 Stanley Park | Free Entry",
+            badge: "🍁 SUMMER 2025", icon: "🎸", images: vancouverFestImages
+        };
+        const vanMarineData = {
+            title: "⛵ Canada Place & Seawall", desc: "تور دریایی، تماشای غروب، اسکله کانادا پلیس",
+            overlayTitle: "Vancouver Waterfront", overlayDate: "🌊 Cruise & Marine Adventure",
+            badge: "🛳️ SEA TO SKY", icon: "⚓", images: vancouverMarineImages
+        };
+        const calgaryAIData = {
+            title: "🤖 Calgary AI Summit 2025", desc: "Artificial Intelligence | Machine Learning | Future Tech",
+            overlayTitle: "AI Summit Calgary", overlayDate: "🚀 September 5-7 | TELUS Convention Centre",
+            badge: "💡 AI INNOVATION", icon: "🧠", images: calgaryAI1Images
+        };
+        const calgaryAITechData = {
+            title: "⚙️ Deep Tech Conference", desc: "Generative AI, Robotics, Startups | کلگری، کانادا",
+            overlayTitle: "Deep Tech Calgary", overlayDate: "🤖 Register Now | Limited Seats",
+            badge: "🔥 NEXT GEN AI", icon: "💻", images: calgaryAI2Images
         };
 
-        // تابع ساخت کارت با اسلایدشو
         function createSlideshowCard(data) {
             const frame = document.createElement('div');
             frame.className = 'poster-frame';
-            
             const neonBorder = document.createElement('div');
             neonBorder.className = 'neon-border';
             frame.appendChild(neonBorder);
             
             const slideshowDiv = document.createElement('div');
             slideshowDiv.className = 'slideshow-container';
-            
-            // ساخت تصاویر
             const slides = [];
             data.images.forEach((url, idx) => {
                 const img = document.createElement('img');
                 img.src = url;
-                img.alt = `${data.title} - ${idx+1}`;
+                img.alt = data.title;
                 img.className = 'slide';
                 if (idx === 0) img.classList.add('active');
                 slideshowDiv.appendChild(img);
                 slides.push(img);
             });
-            
-            // افکت glitch
             const glitch = document.createElement('div');
             glitch.className = 'glitch-overlay';
             slideshowDiv.appendChild(glitch);
-            
-            // بج‌ها
             const badge = document.createElement('div');
             badge.className = 'badge';
             badge.innerText = data.badge;
             slideshowDiv.appendChild(badge);
-            
             const iconBadge = document.createElement('div');
             iconBadge.className = 'icon-badge';
             iconBadge.innerText = data.icon;
             slideshowDiv.appendChild(iconBadge);
-            
-            // متن روی عکس
             const overlayDiv = document.createElement('div');
             overlayDiv.className = 'overlay-text';
             overlayDiv.innerHTML = `<h3>${data.overlayTitle}</h3><p>${data.overlayDate}</p>`;
             slideshowDiv.appendChild(overlayDiv);
-            
             frame.appendChild(slideshowDiv);
-            
-            // کپشن پایین
             const caption = document.createElement('div');
             caption.className = 'poster-caption';
             caption.innerHTML = `<h3>${data.title}</h3><p>${data.desc}</p>`;
             frame.appendChild(caption);
             
-            // اسلایدشو خودکار با fade (هر 4 ثانیه)
             let currentIndex = 0;
             setInterval(() => {
-                slides[currentIndex].classList.remove('active');
-                currentIndex = (currentIndex + 1) % slides.length;
-                slides[currentIndex].classList.add('active');
-            }, 4000);
-            
-            return frame;
-        }
-
-        // رندر کردن گالری‌ها
-        const gradGal = document.getElementById('gradGallery');
-        const regGal = document.getElementById('regGallery');
-        const torGal = document.getElementById('torontoGallery');
-        const silGal = document.getElementById('silentGallery');
-        
-        gradGal.appendChild(createSlideshowCard(graduationData));
-        regGal.appendChild(createSlideshowCard(registrationData));
-        torGal.appendChild(createSlideshowCard(toronto1Data));
-        torGal.appendChild(createSlideshowCard(toronto2Data));
-        silGal.appendChild(createSlideshowCard(silentData));
-        
-        document.getElementById('contactBtn').onclick = (e) => {
-            e.preventDefault();
-            location.href = 'mailto:avinlangroodi4@gmail.com';
-        };
-        document.getElementById('moreBtn').onclick = (e) => {
-            e.preventDefault();
-            alert("✨ نمونه پوسترهای بیشتری با اسلایدشو و افکت‌های سینمایی آماده دارم.");
-        };
-    })();
-</script>
-</body>
-</html>
+                slides[currentIndex].cla
