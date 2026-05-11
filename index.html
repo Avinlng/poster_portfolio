@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>پوسترهای حرفه‌ای | آکادمی ۵ ستاره، دبی، ونکوور، کلگری، AI</title>
+    <title>پوسترهای حرفه‌ای | افکت‌های سینمایی و خلاقانه</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            background: radial-gradient(ellipse at 50% 30%, #0a0a20, #020108);
+            background: radial-gradient(ellipse at 50% 30%, #0a0a20, #010005);
             font-family: 'Segoe UI', 'Montserrat', 'Vazir', system-ui;
             overflow-x: hidden;
             color: #fff;
@@ -27,6 +27,7 @@
         .hero {
             text-align: center;
             margin-bottom: 4rem;
+            position: relative;
         }
         .hero h1 {
             font-size: 4rem;
@@ -59,20 +60,20 @@
 
         .section-title {
             text-align: center;
-            font-size: 2rem;
+            font-size: 1.9rem;
             margin: 3rem 0 2rem;
-            padding: 0.5rem 2.5rem;
+            padding: 0.5rem 2rem;
             border-radius: 60px;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(8px);
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
             display: inline-block;
             border: 1px solid rgba(255,215,0,0.6);
-            box-shadow: 0 0 20px rgba(255,215,0,0.3);
+            box-shadow: 0 0 25px rgba(255,215,0,0.3);
             animation: borderPulse 2s infinite;
         }
         @keyframes borderPulse {
-            0% { border-color: rgba(255,215,0,0.4); box-shadow: 0 0 10px rgba(255,215,0,0.2);}
-            100% { border-color: rgba(255,20,147,0.8); box-shadow: 0 0 25px rgba(255,20,147,0.5);}
+            0% { border-color: rgba(255,215,0,0.4); box-shadow: 0 0 15px rgba(255,215,0,0.2);}
+            100% { border-color: rgba(255,20,147,0.8); box-shadow: 0 0 35px rgba(255,20,147,0.6);}
         }
 
         .title-wrapper {
@@ -84,8 +85,10 @@
             grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
             gap: 2.5rem;
             margin: 2rem 0 4rem;
+            perspective: 1200px;
         }
 
+        /* کارت پوستر با افکت 3D parallax */
         .poster-frame {
             position: relative;
             border-radius: 32px;
@@ -94,17 +97,14 @@
             box-shadow: 0 25px 40px -15px black;
             transition: all 0.4s ease;
             border: 1px solid rgba(255,215,0,0.3);
-            animation: floatShadow 4s ease-in-out infinite;
-        }
-        @keyframes floatShadow {
-            0%, 100% { transform: translateY(0px); box-shadow: 0 25px 40px -15px black; }
-            50% { transform: translateY(-5px); box-shadow: 0 35px 50px -15px rgba(255,215,0,0.3); }
+            transform-style: preserve-3d;
+            transform: rotateX(0deg) rotateY(0deg);
+            transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1), box-shadow 0.3s;
         }
         .poster-frame:hover {
-            transform: scale(1.02) translateY(-8px);
+            transform: translateY(-8px) rotateX(2deg) rotateY(2deg);
+            box-shadow: 0 35px 55px -15px rgba(0,0,0,0.8);
             border-color: #FFD700;
-            box-shadow: 0 0 35px rgba(255,215,0,0.5);
-            animation: none;
         }
 
         .slideshow-container {
@@ -121,17 +121,29 @@
             height: 100%;
             object-fit: cover;
             opacity: 0;
-            transition: opacity 1.2s ease-in-out;
+            transition: opacity 0.8s ease-in-out, transform 6s ease-out;
             filter: brightness(1.02) contrast(1.08) saturate(1.15);
+            transform: scale(1);
         }
         .slide.active {
             opacity: 1;
             z-index: 1;
+            transform: scale(1.08);
+            animation: kenBurns 8s infinite alternate;
         }
-        .poster-frame:hover .slide {
-            filter: brightness(1.1) contrast(1.12) saturate(1.25);
-            transform: scale(1.02);
-            transition: transform 0.5s, filter 0.5s;
+        @keyframes kenBurns {
+            0% { transform: scale(1.08) translate(0, 0); }
+            100% { transform: scale(1.18) translate(-2%, -2%); }
+        }
+
+        /* افکت لرزش هنگام تغییر اسلاید (با JS اضافه می‌شود) */
+        .shake-effect {
+            animation: shake 0.3s ease-in-out;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px) rotate(-0.5deg); }
+            75% { transform: translateX(5px) rotate(0.5deg); }
         }
 
         .glitch-overlay {
@@ -140,11 +152,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: repeating-linear-gradient(0deg, rgba(255,215,0,0.1) 0px, rgba(255,20,147,0.05) 2px, transparent 3px, transparent 8px);
+            background: repeating-linear-gradient(0deg, rgba(255,215,0,0.15) 0px, rgba(255,20,147,0.08) 2px, transparent 3px, transparent 8px);
             pointer-events: none;
             z-index: 2;
             mix-blend-mode: overlay;
-            animation: glitchScan 4s linear infinite;
+            animation: glitchScan 5s linear infinite;
         }
         @keyframes glitchScan {
             0% { transform: translateY(-100%); opacity: 0; }
@@ -154,6 +166,7 @@
             100% { transform: translateY(100%); opacity: 0; }
         }
 
+        /* نئون border با چرخش رنگ */
         .neon-border {
             position: absolute;
             top: -2px;
@@ -165,24 +178,24 @@
             opacity: 0;
             z-index: -1;
             transition: opacity 0.5s;
-            filter: blur(8px);
+            filter: blur(10px);
         }
         .poster-frame:hover .neon-border {
-            opacity: 0.7;
+            opacity: 0.8;
             animation: borderRotate 3s linear infinite;
         }
         @keyframes borderRotate {
-            0% { filter: blur(8px) hue-rotate(0deg);}
-            100% { filter: blur(8px) hue-rotate(360deg);}
+            0% { filter: blur(10px) hue-rotate(0deg);}
+            100% { filter: blur(10px) hue-rotate(360deg);}
         }
 
         .badge {
             position: absolute;
             top: 20px;
             right: 20px;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.75);
             backdrop-filter: blur(12px);
-            padding: 0.5rem 1rem;
+            padding: 0.45rem 1rem;
             border-radius: 40px;
             font-size: 0.7rem;
             font-weight: bold;
@@ -194,7 +207,7 @@
         }
         @keyframes badgePulse {
             0%, 100% { text-shadow: 0 0 2px gold; box-shadow: 0 0 2px gold; }
-            50% { text-shadow: 0 0 10px #FF1493; box-shadow: 0 0 10px #FF1493; border-color: #FF1493; color: #fff; }
+            50% { text-shadow: 0 0 12px #FF1493; box-shadow: 0 0 12px #FF1493; border-color: #FF1493; color: #fff; }
         }
 
         .icon-badge {
@@ -208,11 +221,15 @@
             font-size: 1.5rem;
             z-index: 10;
             border: 1px solid gold;
-            animation: rotateIcon 3s linear infinite;
+            animation: rotateIcon 3s linear infinite, floatIcon 2s ease-in-out infinite;
         }
         @keyframes rotateIcon {
             0% { transform: rotate(0deg);}
             100% { transform: rotate(360deg);}
+        }
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-5px) rotate(10deg); }
         }
 
         .overlay-text {
@@ -220,28 +237,31 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.5), transparent);
+            background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.5), transparent);
             padding: 1.8rem 1rem 1rem;
             backdrop-filter: blur(4px);
             z-index: 5;
         }
         .overlay-text h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             background: linear-gradient(135deg, #FFD700, #FF6B35);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            animation: textShine 2s infinite;
+            animation: textShine 2.5s infinite;
+            position: relative;
+            display: inline-block;
         }
         @keyframes textShine {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; text-shadow: 0 0 4px rgba(255,215,0,0.5);}
-            100% { background-position: 0% 50%; }
+            0% { background-position: 0% 50%; text-shadow: 0 0 0px gold; }
+            50% { background-position: 100% 50%; text-shadow: 0 0 8px rgba(255,215,0,0.6);}
+            100% { background-position: 0% 50%; text-shadow: 0 0 0px gold; }
         }
         .overlay-text p {
             color: #FFD700;
             font-size: 0.8rem;
             text-shadow: 0 0 8px black;
+            letter-spacing: 1px;
         }
 
         .poster-caption {
@@ -255,6 +275,17 @@
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
+        }
+
+        /* ذرات معلق */
+        .particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
         }
 
         .contact-box {
@@ -301,13 +332,14 @@
     </style>
 </head>
 <body>
+<canvas id="particlesCanvas" class="particles-canvas"></canvas>
 <div class="container">
     <div class="hero">
-        <h1>⚡ MOTION POSTERS ⚡</h1>
-        <p>اسلایدشو محو شونده | دبی، ونکوور، کلگری | هوش مصنوعی و رویدادهای جهانی</p>
+        <h1>⚡ CINEMATIC POSTERS ⚡</h1>
+        <p>پارالاکس سه‌بعدی | ذرات معلق | Ken Burns | افکت‌های خلاقانه</p>
     </div>
 
-    <!-- بخش‌های آکادمی ۵ ستاره -->
+    <!-- بخش‌ها -->
     <div class="title-wrapper"><span class="section-title">🎈 کف‌پارتی | مهمانی روی زمین</span></div>
     <div class="gallery" id="floorPartyGallery"></div>
 
@@ -317,129 +349,88 @@
     <div class="title-wrapper"><span class="section-title">📝 ثبت‌نام آکادمی ۵ ستاره</span></div>
     <div class="gallery" id="regGallery"></div>
 
-    <!-- بخش دبی و فرشاد سایلنت (۲ پوستر مرتبط با دبی) -->
     <div class="title-wrapper"><span class="section-title">🇦🇪 دبی | برج خلیفه & فرشاد سایلنت</span></div>
     <div class="gallery" id="dubaiGallery"></div>
 
-    <!-- بخش ونکوور (۲ پوستر) -->
     <div class="title-wrapper"><span class="section-title">🌊 ونکوور | جشنواره‌ها و رویدادها</span></div>
     <div class="gallery" id="vancouverGallery"></div>
 
-    <!-- بخش کلگری (۲ پوستر هوش مصنوعی) -->
     <div class="title-wrapper"><span class="section-title">🤖 کلگری | هوش مصنوعی و فناوری</span></div>
     <div class="gallery" id="calgaryGallery"></div>
 
     <div class="contact-box">
-        <p>✨ طراحی پوستر با اسلایدشوهای حرفه‌ای، ۸ پوستر متفاوت، افکت‌های سینمایی ✨</p>
+        <p>✨ طراحی پوستر با جدیدترین افکت‌های سینمایی و موشن گرافیک ✨</p>
         <div class="email">avinlangroodi4@gmail.com</div><br>
         <a href="#" class="btn" id="contactBtn">سفارش طراحی</a>
         <a href="#" class="btn" id="moreBtn">نمونه بیشتر</a>
     </div>
-    <footer>© هر پوستر دارای ۳ عکس با محو شدن خودکار | تلفیق آکادمی، دبی، ونکوور، کلگری و AI</footer>
+    <footer>© ۸ پوستر حرفه‌ای با اسلایدشو، پارالاکس، ذرات و افکت‌های خلاقانه</footer>
 </div>
 
 <script>
     (function() {
-        // ---------- 1. کف پارتی ----------
-        const floorPartyImages = [
+        // ---------- عکس‌های مرتبط با هر بخش (لینک مستقیم از Pexels) ----------
+        const floorImages = [
             "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/8613090/pexels-photo-8613090.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/8613091/pexels-photo-8613091.jpeg?w=700&h=980&fit=crop"
         ];
-        // ---------- 2. فارغ‌التحصیلی ----------
-        const graduationImages = [
+        const gradImages = [
             "https://images.pexels.com/photos/8613088/pexels-photo-8613088.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/8613081/pexels-photo-8613081.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/8613080/pexels-photo-8613080.jpeg?w=700&h=980&fit=crop"
         ];
-        // ---------- 3. ثبت‌نام ----------
         const regImages = [
             "https://images.pexels.com/photos/8613083/pexels-photo-8613083.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/8613075/pexels-photo-8613075.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/8423124/pexels-photo-8423124.jpeg?w=700&h=980&fit=crop"
         ];
-        // ---------- 4. دبی (فرشاد سایلنت + تور دبی) دو کارت ----------
-        const dubaiSilentImages = [
+        const dubaiSilent = [
             "https://images.pexels.com/photos/2903860/pexels-photo-2903860.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/258117/pexels-photo-258117.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/1268855/pexels-photo-1268855.jpeg?w=700&h=980&fit=crop"
         ];
-        const dubaiTourImages = [
+        const dubaiTour = [
             "https://images.pexels.com/photos/4701014/pexels-photo-4701014.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/1906567/pexels-photo-1906567.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/169195/pexels-photo-169195.jpeg?w=700&h=980&fit=crop"
         ];
-        // ---------- 5. ونکوور (جشنواره، طبیعت، کانادا پلیس) ----------
-        const vancouverFestImages = [
+        const vanFest = [
             "https://images.pexels.com/photos/1313512/pexels-photo-1313512.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/358500/pexels-photo-358500.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/357428/pexels-photo-357428.jpeg?w=700&h=980&fit=crop"
         ];
-        const vancouverMarineImages = [
+        const vanMarine = [
             "https://images.pexels.com/photos/1630905/pexels-photo-1630905.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/1628786/pexels-photo-1628786.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/1613975/pexels-photo-1613975.jpeg?w=700&h=980&fit=crop"
         ];
-        // ---------- 6. کلگری (AI و فناوری) ----------
-        const calgaryAI1Images = [
+        const calgAI1 = [
             "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?w=700&h=980&fit=crop"
         ];
-        const calgaryAI2Images = [
+        const calgAI2 = [
             "https://images.pexels.com/photos/5473956/pexels-photo-5473956.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?w=700&h=980&fit=crop"
         ];
 
-        // اطلاعات همه کارت‌ها
-        const floorData = {
-            title: "🎈 کف‌پارتی پرانرژی", desc: "بازی، بادکنک، موسیقی شاد | ویژه بچه‌های آکادمی",
-            overlayTitle: "Floor Party", overlayDate: "🎉 مهمونی روی زمین | ۲۵ اسفند",
-            badge: "✨ FUN TIME", icon: "🎈", images: floorPartyImages
-        };
-        const gradData = {
-            title: "🎓 جشن فارغ‌التحصیلی", desc: "دریافت مدرک + کلاه و لباس مخصوص | ۲۰ اسفند",
-            overlayTitle: "Graduation Ceremony", overlayDate: "🎓 کلاه و لباس فارغ‌التحصیلی",
-            badge: "⭐ CLASS OF 2025", icon: "🎉", images: graduationImages
-        };
-        const regData = {
-            title: "📝 ثبت‌نام آغاز شد", desc: "تخفیف ۳۰٪ | هدیه ثبت‌نام | شروع ترم بهار",
-            overlayTitle: "Enrollment Open", overlayDate: "🔥 تخفیف ۳۰٪ تا پایان اسفند",
-            badge: "🎁 OFFER 30%", icon: "📚", images: regImages
-        };
-        const dubaiSilentData = {
-            title: "🎥 فرشاد سایلنت | برج خلیفه", desc: "ویدیو گردش اختصاصی در بلندترین برج جهان | دبی",
-            overlayTitle: "Burj Khalifa | Dubai", overlayDate: "▶️ جدیدترین ویدیو | همین حالا",
-            badge: "🔥 NEW EPISODE", icon: "🎬", images: dubaiSilentImages
-        };
-        const dubaiTourData = {
-            title: "🇦🇪 لوکس تور دبی", desc: "سفر به دبی، برج خلیفه، دبی مال، فواره‌ها | تجربه‌ای رویایی",
-            overlayTitle: "Dubai Luxury Tour", overlayDate: "✨ رزرو تورهای ویژه ✨",
-            badge: "⭐ DUBAI EXPO", icon: "🕌", images: dubaiTourImages
-        };
-        const vanFestData = {
-            title: "🌊 Vancouver Summer Fest", desc: "جشنواره موسیقی، هنر و غذا | July 10-15, 2025",
-            overlayTitle: "Vancouver Fest 2025", overlayDate: "🎶 Stanley Park | Free Entry",
-            badge: "🍁 SUMMER 2025", icon: "🎸", images: vancouverFestImages
-        };
-        const vanMarineData = {
-            title: "⛵ Canada Place & Seawall", desc: "تور دریایی، تماشای غروب، اسکله کانادا پلیس",
-            overlayTitle: "Vancouver Waterfront", overlayDate: "🌊 Cruise & Marine Adventure",
-            badge: "🛳️ SEA TO SKY", icon: "⚓", images: vancouverMarineImages
-        };
-        const calgaryAIData = {
-            title: "🤖 Calgary AI Summit 2025", desc: "Artificial Intelligence | Machine Learning | Future Tech",
-            overlayTitle: "AI Summit Calgary", overlayDate: "🚀 September 5-7 | TELUS Convention Centre",
-            badge: "💡 AI INNOVATION", icon: "🧠", images: calgaryAI1Images
-        };
-        const calgaryAITechData = {
-            title: "⚙️ Deep Tech Conference", desc: "Generative AI, Robotics, Startups | کلگری، کانادا",
-            overlayTitle: "Deep Tech Calgary", overlayDate: "🤖 Register Now | Limited Seats",
-            badge: "🔥 NEXT GEN AI", icon: "💻", images: calgaryAI2Images
-        };
+        // دیتاهای کارت‌ها
+        const cardsData = [
+            { id: "floorPartyGallery", title: "🎈 کف‌پارتی پرانرژی", desc: "بازی، بادکنک، موسیقی شاد", overlayTitle: "Floor Party", overlayDate: "🎉 مهمونی روی زمین | ۲۵ اسفند", badge: "✨ FUN TIME", icon: "🎈", images: floorImages },
+            { id: "graduationGallery", title: "🎓 جشن فارغ‌التحصیلی", desc: "دریافت مدرک + کلاه و لباس مخصوص", overlayTitle: "Graduation Ceremony", overlayDate: "🎓 کلاه و لباس فارغ‌التحصیلی", badge: "⭐ CLASS OF 2025", icon: "🎉", images: gradImages },
+            { id: "regGallery", title: "📝 ثبت‌نام آغاز شد", desc: "تخفیف ۳۰٪ | هدیه ثبت‌نام", overlayTitle: "Enrollment Open", overlayDate: "🔥 تخفیف ۳۰٪ تا پایان اسفند", badge: "🎁 OFFER 30%", icon: "📚", images: regImages },
+            { id: "dubaiGallery", title: "🎥 فرشاد سایلنت | برج خلیفه", desc: "ویدیو گردش اختصاصی در دبی", overlayTitle: "Burj Khalifa", overlayDate: "▶️ جدیدترین ویدیو", badge: "🔥 NEW EPISODE", icon: "🎬", images: dubaiSilent, multi: true },
+            { id: "dubaiGallery", title: "🇦🇪 لوکس تور دبی", desc: "سفر به دبی، برج خلیفه، فواره", overlayTitle: "Dubai Luxury Tour", overlayDate: "✨ رزرو تورهای ویژه", badge: "⭐ DUBAI EXPO", icon: "🕌", images: dubaiTour, multi: true },
+            { id: "vancouverGallery", title: "🌊 Vancouver Summer Fest", desc: "جشنواره موسیقی، هنر و غذا", overlayTitle: "Vancouver Fest 2025", overlayDate: "🎶 Stanley Park", badge: "🍁 SUMMER 2025", icon: "🎸", images: vanFest, multi: true },
+            { id: "vancouverGallery", title: "⛵ Canada Place & Seawall", desc: "تور دریایی، تماشای غروب", overlayTitle: "Vancouver Waterfront", overlayDate: "🌊 Marine Adventure", badge: "🛳️ SEA TO SKY", icon: "⚓", images: vanMarine, multi: true },
+            { id: "calgaryGallery", title: "🤖 Calgary AI Summit 2025", desc: "Artificial Intelligence | Future Tech", overlayTitle: "AI Summit Calgary", overlayDate: "🚀 September 5-7", badge: "💡 AI INNOVATION", icon: "🧠", images: calgAI1, multi: true },
+            { id: "calgaryGallery", title: "⚙️ Deep Tech Conference", desc: "Generative AI, Robotics, Startups", overlayTitle: "Deep Tech Calgary", overlayDate: "🤖 Register Now", badge: "🔥 NEXT GEN AI", icon: "💻", images: calgAI2, multi: true }
+        ];
 
-        function createSlideshowCard(data) {
+        // تابع ساخت کارت اسلایدشو با افکت Ken Burns و لرزش
+        function createSlideshowCard(data, isMulti = false) {
             const frame = document.createElement('div');
             frame.className = 'poster-frame';
             const neonBorder = document.createElement('div');
@@ -480,5 +471,113 @@
             frame.appendChild(caption);
             
             let currentIndex = 0;
-            setInterval(() => {
-                slides[currentIndex].cla
+            let interval = setInterval(() => {
+                slides.forEach(slide => slide.classList.remove('active'));
+                currentIndex = (currentIndex + 1) % slides.length;
+                slides[currentIndex].classList.add('active');
+                // افزودن افکت لرزش به کل فریم
+                frame.classList.add('shake-effect');
+                setTimeout(() => frame.classList.remove('shake-effect'), 300);
+            }, 5000);
+            
+            // ذخیره interval برای پاکسازی (اختیاری)
+            frame.dataset.interval = interval;
+            return frame;
+        }
+
+        // رندر گالری‌ها با پشتیبانی از چند کارت در یک گالری
+        function renderGalleries() {
+            const groups = {
+                floorPartyGallery: [], graduationGallery: [], regGallery: [], dubaiGallery: [], vancouverGallery: [], calgaryGallery: []
+            };
+            cardsData.forEach(card => {
+                if (groups[card.id]) groups[card.id].push(card);
+            });
+            for (let [galleryId, cards] of Object.entries(groups)) {
+                const gallery = document.getElementById(galleryId);
+                if (gallery) {
+                    gallery.innerHTML = '';
+                    cards.forEach(card => {
+                        gallery.appendChild(createSlideshowCard(card, true));
+                    });
+                }
+            }
+        }
+        renderGalleries();
+
+        // ---------- افکت پارالاکس سه‌بعدی روی کارت‌ها با حرکت موس ----------
+        document.querySelectorAll('.poster-frame').forEach(frame => {
+            frame.addEventListener('mousemove', (e) => {
+                const rect = frame.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                frame.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+            });
+            frame.addEventListener('mouseleave', () => {
+                frame.style.transform = '';
+            });
+        });
+
+        // ---------- ذرات معلق (پارتیکل) ----------
+        const canvas = document.getElementById('particlesCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.3;
+                this.color = `rgba(255, ${Math.random() * 100 + 155}, 50, ${Math.random() * 0.4 + 0.1})`;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        }
+        function initParticles(count) {
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        initParticles(120);
+        animateParticles();
+
+        // دکمه‌ها
+        document.getElementById('contactBtn').onclick = (e) => { e.preventDefault(); location.href = 'mailto:avinlangroodi4@gmail.com'; };
+        document.getElementById('moreBtn').onclick = (e) => { e.preventDefault(); alert("✨ ۸ پوستر حرفه‌ای با افکت‌های خلاقانه آماده است."); };
+    })();
+</script>
+</body>
+</html>
+```
