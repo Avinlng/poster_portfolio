@@ -370,11 +370,11 @@
 <script>
     (function() {
         // ---------- عکس‌های مرتبط با هر بخش (لینک مستقیم از Pexels) ----------
-        const floorImages = [
-            "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?w=700&h=980&fit=crop",
-            "https://images.pexels.com/photos/8613090/pexels-photo-8613090.jpeg?w=700&h=980&fit=crop",
-            "https://images.pexels.com/photos/8613091/pexels-photo-8613091.jpeg?w=700&h=980&fit=crop"
-        ];
+        const floorPartyImages = [
+    "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?w=700&h=980&fit=crop",
+    "https://images.pexels.com/photos/8613090/pexels-photo-8613090.jpeg?w=700&h=980&fit=crop",
+    "https://images.pexels.com/photos/8613091/pexels-photo-8613091.jpeg?w=700&h=980&fit=crop"
+];
         const gradImages = [
             "https://images.pexels.com/photos/8613088/pexels-photo-8613088.jpeg?w=700&h=980&fit=crop",
             "https://images.pexels.com/photos/8613081/pexels-photo-8613081.jpeg?w=700&h=980&fit=crop",
@@ -417,8 +417,15 @@
         ];
 
         // دیتاهای کارت‌ها
-        const cardsData = [
-            { id: "floorPartyGallery", title: "🎈 کف‌پارتی پرانرژی", desc: "بازی، بادکنک، موسیقی شاد", overlayTitle: "Floor Party", overlayDate: "🎉 مهمونی روی زمین | ۲۵ اسفند", badge: "✨ FUN TIME", icon: "🎈", images: floorImages },
+        const cardsData = [const floorData = {
+    title: "🫧 جشن فوم و حباب",
+    desc: "بازی با کف صابون، حباب‌های غول‌پیکر و خنده",
+    overlayTitle: "Foam & Bubble Party",
+    overlayDate: "🎈 پر از آب و کف | ۲۵ اسفند",
+    badge: "✨ BUBBLE FUN",
+    icon: "🫧",
+    images: floorPartyImages  // همان آرایه جدید
+};
             { id: "graduationGallery", title: "🎓 جشن فارغ‌التحصیلی", desc: "دریافت مدرک + کلاه و لباس مخصوص", overlayTitle: "Graduation Ceremony", overlayDate: "🎓 کلاه و لباس فارغ‌التحصیلی", badge: "⭐ CLASS OF 2025", icon: "🎉", images: gradImages },
             { id: "regGallery", title: "📝 ثبت‌نام آغاز شد", desc: "تخفیف ۳۰٪ | هدیه ثبت‌نام", overlayTitle: "Enrollment Open", overlayDate: "🔥 تخفیف ۳۰٪ تا پایان اسفند", badge: "🎁 OFFER 30%", icon: "📚", images: regImages },
             { id: "dubaiGallery", title: "🎥 فرشاد سایلنت | برج خلیفه", desc: "ویدیو گردش اختصاصی در دبی", overlayTitle: "Burj Khalifa", overlayDate: "▶️ جدیدترین ویدیو", badge: "🔥 NEW EPISODE", icon: "🎬", images: dubaiSilent, multi: true },
